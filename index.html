@@ -100,12 +100,14 @@
       padding: 14px 16px;
       border-radius: var(--radius);
       border: 1px solid rgba(14,165,233,.35);
-      background: linear-gradient(120deg, rgba(14,165,233,.14), rgba(245,158,11,.12));
+      background: linear-gradient(120deg, rgba(14,165,233,.32), rgba(245,158,11,.24), rgba(14,165,233,.32));
+      background-size: 220% 220%;
       display:flex;
       align-items: center;
       gap: 12px;
       box-shadow: 0 12px 26px rgba(14,165,233,.12);
       font-weight: 640;
+      animation: bannerGlow 12s linear infinite;
     }
     .banner svg{
       width: 22px;
@@ -113,6 +115,12 @@
       flex-shrink: 0;
       fill: currentColor;
       color: #0f172a;
+    }
+    .banner .banner-content{ flex:1; }
+    @keyframes bannerGlow{
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* Consentement cookies */
@@ -169,6 +177,9 @@
       .cookie-banner{ flex-direction: column; }
       .cookie-actions{ width: 100%; justify-content: flex-end; }
     }
+    @media (prefers-reduced-motion: reduce){
+      .banner{ animation: none; }
+    }
 
     /* HERO */
     .hero{
@@ -211,8 +222,9 @@
 
     .hero h1{
       margin: 0 0 6px;
-      font-size: clamp(1.55rem, 2.2vw, 2.1rem);
+      font-size: clamp(1.7rem, 2.6vw, 2.3rem);
       letter-spacing: .2px;
+      line-height: 1.2;
     }
     .subtitle{
       margin: 0 0 14px;
@@ -257,18 +269,25 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 16px;
-      background: rgba(255,255,255,.85);
+      background: linear-gradient(160deg, rgba(14,165,233,.08), rgba(255,255,255,.92));
     }
     .meta .row{
       display:flex;
       justify-content: space-between;
-      gap: 14px;
-      padding: 10px 0;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 10px;
       border-bottom: 1px dashed rgba(15,23,42,.12);
+      border-radius: var(--radius-sm);
+      transition: background .18s ease, border-color .18s ease;
     }
     .meta .row:last-child{ border-bottom:0; }
-    .meta .k{ color: var(--muted); }
-    .meta .v{ color: var(--text); font-weight: 680; text-align:right; }
+    .meta .row:hover{
+      background: rgba(14,165,233,.06);
+      border-color: rgba(14,165,233,.18);
+    }
+    .meta .k{ color: var(--muted); display:flex; align-items:center; gap:6px; }
+    .meta .v{ color: var(--text); font-weight: 680; text-align:right; flex:1; line-height: 1.4; }
     .meta .k.icon{ display:flex; align-items:center; gap:6px; }
     .meta .k.icon svg{ width:18px; height:18px; display:block; fill: currentColor; }
     .meta .avatar-box{
@@ -323,16 +342,41 @@
       background: rgba(255,255,255,.94);
       border-radius: var(--radius);
       padding: 18px;
-      box-shadow: 0 12px 26px rgba(14,165,233,.08);
+      box-shadow: 0 6px 14px rgba(15,23,42,.06);
       position: relative;
-      overflow: hidden;
-      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+      overflow: visible;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, filter .22s ease;
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset: 6px -6px -6px 6px;
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(135deg, rgba(14,165,233,.24), rgba(245,158,11,.22));
+      opacity: 0;
+      transform: translate(10px,10px);
+      transition: opacity .24s ease, transform .24s ease;
+      z-index: -1;
     }
 
     .card:hover{
-      transform: translateY(-3px);
-      border-color: var(--accent);
-      box-shadow: 0 18px 42px rgba(193,18,31,.18);
+      transform: translateY(-2px);
+      border-color: rgba(14,165,233,.32);
+      box-shadow: 0 10px 22px rgba(14,165,233,.12);
+      filter: none;
+    }
+    .card:hover::after{
+      opacity: 1;
+      transform: translate(8px,8px);
+    }
+
+    /* Neutraliser le hover sur les cartes de la section compétences uniquement */
+    #competences .card::after{ display:none; }
+    #competences .card:hover{
+      transform: none;
+      border-color: var(--border);
+      box-shadow: 0 6px 14px rgba(15,23,42,.06);
     }
     .card strong::before{
       content: "";
@@ -378,6 +422,18 @@
       font-size: .88rem;
       color: rgba(15,23,42,.70);
       white-space: nowrap;
+    }
+    #competences .tag-row{
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 6px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    #competences .tag-row:hover{
+      border-color: rgba(14,165,233,.28);
+      background: rgba(14,165,233,.06);
+      box-shadow: 0 8px 18px rgba(14,165,233,.10);
+      transform: translateY(-1px);
     }
 
     .sr-only{
@@ -464,12 +520,13 @@
         <a class="chip" href="#competences">Compétences</a>
         <a class="chip" href="#experience">Expérience</a>
         <a class="chip" href="#contact">Contact</a>
+        <button class="chip lang-toggle" type="button" aria-label="Switch language">🇬🇧 EN</button>
       </div>
     </div>
 
     <div class="banner" role="note">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3h-7.57L12.5.5 11.07 3H3.5A1.5 1.5 0 0 0 2 4.5v16A1.5 1.5 0 0 0 3.5 22h18a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 21.5 3Zm-6.44 14.94-3.14-1.65-3.14 1.65.6-3.44-2.5-2.43 3.46-.5 1.54-3.12 1.55 3.12 3.46.5-2.5 2.43.6 3.44Z"/></svg>
-      <div>Recherche un stage de fin de cycle ingénieur à partir de mars 2026 pour une durée de 6 mois.</div>
+      <div class="banner-content">Recherche un stage de fin de cycle ingénieur à partir de mars 2026 pour une durée de 6 mois.</div>
     </div>
 
     <header class="hero" id="top">
@@ -635,7 +692,7 @@
       </div>
     </section>
 
-    <!-- COMPETENCES : contenu remis comme tu l'avais donné -->
+    <!-- COMPETENCES :  -->
     <section id="competences">
       <h2>Compétences</h2>
 
@@ -759,15 +816,311 @@
     </div>
   </div>
   <script>
-    const phones = document.querySelectorAll('.phone');
     const decode = str => atob(str);
-    phones.forEach(el => {
-      const raw = el.getAttribute('data-phone');
-      if(!raw) return;
-      const text = decode(raw);
-      el.textContent = text;
-      el.setAttribute('href', 'tel:' + text.replace(/\s+/g, ''));
+    const hydratePhones = () => {
+      const phones = document.querySelectorAll('.phone');
+      phones.forEach(el => {
+        const raw = el.getAttribute('data-phone');
+        if(!raw) return;
+        const text = decode(raw);
+        el.textContent = text;
+        el.setAttribute('href', 'tel:' + text.replace(/\s+/g, ''));
+      });
+    };
+    hydratePhones();
+
+    // I18n toggle
+    const translations = {
+      fr: {
+        nav: ["CV", "Projets", "Compétences", "Expérience", "Contact"],
+        banner: "Recherche un stage de fin de cycle ingénieur à partir de mars 2026 pour une durée de 6 mois.",
+        subtitle: "Étudiant ingénieur (M2) à l'ISEN Méditerrannée",
+        heroIntro: `<p class="hero-hook">
+              J’analyse, modélise et interprète des <strong>signaux complexes</strong> et des
+              <strong>données réelles</strong> pour concevoir des solutions d’
+              <strong>intelligence artificielle applicables en industrie comme en santé</strong>.
+            </p>
+
+            <p>
+              Je conçois et j’évalue des <strong>modèles de machine learning</strong> à partir de
+              <strong>signaux</strong> et d’<strong>images</strong>, en travaillant sur :
+            </p>
+
+            <ul>
+              <li><strong>Extraction de caractéristiques</strong></li>
+              <li><strong>Sélection de modèles</strong></li>
+              <li><strong>Analyse des performances</strong></li>
+            </ul>
+
+            <p>
+              Mes projets s’appuient notamment sur des <strong>données physiologiques</strong>
+              (<abbr title="Électrocardiogramme">ECG</abbr>/<abbr title="Variabilité de la fréquence cardiaque">HRV</abbr>,
+              impédance biométrique) et sur de l’<strong>imagerie médicale</strong>.
+            </p>
+
+            <p>
+              <strong>Transférabilité :</strong> les méthodes et outils que je développe sont
+              <strong>transposables à d’autres domaines industriels</strong>, dès lors qu’il s’agit
+              d’analyser, modéliser et interpréter des <strong>signaux</strong> ou des
+              <strong>données multidimensionnelles</strong>, dans des contextes
+              <strong>académiques</strong>, <strong>industriels</strong> ou <strong>hospitaliers</strong>.
+            </p>`,
+        cvTitle: "Mon CV personnalisé par domaine",
+        cvIndustry: `<strong>CV Industrie — IA & traitement du signal</strong>
+          <p class="kicker">Pour industrie, défense, R&amp;D, analyse de signaux, IA appliquée.</p>
+          <div class="btns">
+            <a class="btn primary" href="assets/cvs/cv-industrie-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+          </div>`,
+        cvMedical: `<strong>CV Domaine médical — IA & signaux physiologiques</strong>
+          <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
+          <div class="btns">
+            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+          </div>`,
+        projectsTitle: "Projets principaux",
+        projects: [
+          `<strong>Skin Maven Bandage — Classification biométrique par IA</strong>
+          <p class="kicker">Projet M1 — données réelles sur 83 volontaires.</p>
+          <ul>
+            <li>Data augmentation : SMOTE, randomisation</li>
+            <li>Modèles comparés : Logistic Regression, Random Forest, Gaussian, KNN, SVC</li>
+            <li>Modèle retenu : Random Forest</li>
+            <li>Résultats : ~90 % sexe, ~60 % âge, ~20 % teinte de peau</li>
+          </ul>
+          <p class="kicker">
+            🔗 Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
+          </p>`,
+          `<strong>Suivi de patients épileptiques par IA (en cours) — Hackathon STMicroelectronics</strong>
+          <p class="kicker">Analyse ECG (PhysioNet CHB-MIT), modèles via Edge Impulse, export vers STM32.</p>
+          <ul>
+            <li>Données : ECG de 40 patients, ~1000 fenêtres de 30 s</li>
+            <li>Indicateurs : RMSSD, SDNN, ratio LF/HF</li>
+            <li>État : résultats exploratoires, performances non stabilisées</li>
+          </ul>
+          <p class="kicker">
+            🔗 Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
+          </p>`,
+          `<strong>Segmentation de zones d’intérêt sur images radiographiques</strong>
+          <p class="kicker">Projet académique — segmentation (note 16/20).</p>
+          <ul>
+            <li>Langages : Python, Octave</li>
+            <li>Algorithmes : Otsu, Sobel, érosion, dilatation</li>
+            <li>Données : 4 images (résultats qualitatifs)</li>
+          </ul>
+          <p class="kicker">
+            🔗 Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
+          </p>`,
+          `<strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
+          <p class="kicker">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
+          <ul>
+            <li>Définition de cas d’usage et scénarios de tests, comptes rendus aux développeurs</li>
+            <li>Interface entre pharmacien, médecin et équipe de développement</li>
+            <li>Extraction et centralisation de données à partir d’environ 80 rapports (DOCX/XLSX)</li>
+            <li>Automatisation Python (openpyxl, python-docx) + Excel / Power Query / TCD</li>
+          </ul>`
+        ],
+        skillsTitle: "Compétences",
+        experienceTitle: "Expérience",
+        experienceCard: `<strong>CHU de Nice — Pôle Pharmacie — Stage ingénieur (juin → sept. 2025)</strong>
+          <ul>
+            <li>Validation fonctionnelle d’une application mobile de suivi médical (projet MUSE).</li>
+            <li>Définition de cas d’usage et scénarios de tests, rapports aux développeurs.</li>
+            <li>Interface entre pharmacien, médecin et équipe de développement.</li>
+            <li>Extraction et centralisation de données à partir d’environ 80 rapports d’entretien (DOCX/XLSX).</li>
+            <li>Automatisation via Python (openpyxl, python-docx) et analyse sous Excel / Power Query.</li>
+          </ul>`,
+        contactTitle: "Contact",
+        contactCard1: `<strong>Coordonnées</strong>
+          <p style="margin-top:10px;">
+            📍 Localisation : Nice et Toulon (candidatures France entière)<br>
+            📧 <a href="mailto:recrutement.celian@di-giovanni.com">celian.digiovanni@gmail.com</a><br>
+            📞 <a class="mono phone" data-phone="KzMzNzcwMzk2MDI5" href="#phone">Afficher le numéro</a><br>
+            🔗 <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">linkedin.com/in/celian-di-giovanni</a><br>
+            🔗 <a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">github.com/celian06</a>
+          </p>`,
+        contactCard2: `<strong>Infos</strong>
+          <p class="small" style="margin-top:10px;">
+            Domaine : IA & traitement du signal<br>
+            Disponibilité : 30/03/2026 (6 mois)
+          </p>`,
+        footer: "Dernière mise à jour : le 12/12/2025",
+        cookieText: "Utilisation de Google Analytics (cookies optionnels) pour mesurer l’audience. Vous pouvez accepter ou refuser. Les cookies ne seront déposés qu’en cas d’accord.",
+        cookieAccept: "Accepter",
+        cookieDecline: "Refuser"
+      },
+      en: {
+        nav: ["Resume", "Projects", "Skills", "Experience", "Contact"],
+        banner: "Seeking a 6‑month final-year engineering internship starting March 2026.",
+        subtitle: "M2 engineering student at ISEN Méditerranée",
+        heroIntro: `<p class="hero-hook">
+              I analyze, model, and interpret <strong>complex signals</strong> and <strong>real-world data</strong> to design
+              <strong>AI solutions for industry and healthcare</strong>.
+            </p>
+
+            <p>
+              I design and evaluate <strong>machine learning models</strong> on <strong>signals</strong> and <strong>images</strong>, focusing on:
+            </p>
+
+            <ul>
+              <li><strong>Feature extraction</strong></li>
+              <li><strong>Model selection</strong></li>
+              <li><strong>Performance analysis</strong></li>
+            </ul>
+
+            <p>
+              My projects leverage <strong>physiological data</strong> (ECG/HRV, biometric impedance) and <strong>medical imaging</strong>.
+            </p>
+
+            <p>
+              <strong>Transferability:</strong> the methods and tools I build are <strong>applicable to other industries</strong> whenever
+              there is a need to analyze, model, and interpret <strong>signals</strong> or <strong>multidimensional data</strong> in
+              <strong>academic</strong>, <strong>industrial</strong>, or <strong>clinical</strong> settings.
+            </p>`,
+        cvTitle: "Resume tailored by domain",
+        cvIndustry: `<strong>Industry Resume — AI & Signal Processing</strong>
+          <p class="kicker">For industry, defense, R&D, signal analysis, applied AI.</p>
+          <div class="btns">
+            <a class="btn primary" href="assets/cvs/cv-industrie-celian-di-giovanni.pdf">Download (PDF)</a>
+          </div>`,
+        cvMedical: `<strong>Medical Resume — AI & Physiological Signals</strong>
+          <p class="kicker">For hospitals, medtech, medical imaging, clinical data, e-health.</p>
+          <div class="btns">
+            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-di-giovanni.pdf">Download (PDF)</a>
+          </div>`,
+        projectsTitle: "Key projects",
+        projects: [
+          `<strong>Skin Maven Bandage — Biometric classification with ML</strong>
+          <p class="kicker">M1 project — real-world data on 83 volunteers.</p>
+          <ul>
+            <li>Data augmentation: SMOTE, randomization</li>
+            <li>Models compared: Logistic Regression, Random Forest, Gaussian, KNN, SVC</li>
+            <li>Chosen model: Random Forest</li>
+            <li>Results: ~90% gender, ~60% age, ~20% skin tone</li>
+          </ul>
+          <p class="kicker">
+            🔗 Code: <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
+          </p>`,
+          `<strong>Epilepsy patient monitoring by AI (in progress) — STMicroelectronics Hackathon</strong>
+          <p class="kicker">ECG analysis (PhysioNet CHB-MIT), models via Edge Impulse, export to STM32.</p>
+          <ul>
+            <li>Data: ECG from 40 patients, ~1000 windows of 30 s</li>
+            <li>Indicators: RMSSD, SDNN, LF/HF ratio</li>
+            <li>Status: exploratory results, performance not stabilized</li>
+          </ul>
+          <p class="kicker">
+            🔗 Code: <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
+          </p>`,
+          `<strong>Segmentation of regions of interest on radiographic images</strong>
+          <p class="kicker">Academic project — segmentation (grade 16/20).</p>
+          <ul>
+            <li>Languages: Python, Octave</li>
+            <li>Algorithms: Otsu, Sobel, erosion, dilation</li>
+            <li>Data: 4 images (qualitative results)</li>
+          </ul>
+          <p class="kicker">
+            🔗 Code: <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
+          </p>`,
+          `<strong>Internship — Nice University Hospital (2025): QA & clinical data</strong>
+          <p class="kicker">App validation (MUSE) + extraction/structuring of clinical data.</p>
+          <ul>
+            <li>Use-case definition and test scenarios, reports to developers</li>
+            <li>Interface between pharmacist, physician, and dev team</li>
+            <li>Data extraction/centralization from ~80 interview reports (DOCX/XLSX)</li>
+            <li>Automation with Python (openpyxl, python-docx) + Excel / Power Query / Pivot Tables</li>
+          </ul>`
+        ],
+        skillsTitle: "Skills",
+        experienceTitle: "Experience",
+        experienceCard: `<strong>Nice University Hospital — Pharmacy Dept. — Engineering intern (Jun → Sep 2025)</strong>
+          <ul>
+            <li>Functional validation of a mobile medical app (MUSE project).</li>
+            <li>Use-case and test-scenario definition, reports to developers.</li>
+            <li>Interface between pharmacist, physician, and development team.</li>
+            <li>Data extraction/centralization from ~80 interview reports (DOCX/XLSX).</li>
+            <li>Automation with Python (openpyxl, python-docx) and analysis in Excel / Power Query.</li>
+          </ul>`,
+        contactTitle: "Contact",
+        contactCard1: `<strong>Contact details</strong>
+          <p style="margin-top:10px;">
+            📍 Location: Nice & Toulon (applications across France)<br>
+            📧 <a href="mailto:recrutement.celian@di-giovanni.com">celian.digiovanni@gmail.com</a><br>
+            📞 <a class="mono phone" data-phone="KzMzNzcwMzk2MDI5" href="#phone">Show number</a><br>
+            🔗 <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">linkedin.com/in/celian-di-giovanni</a><br>
+            🔗 <a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">github.com/celian06</a>
+          </p>`,
+        contactCard2: `<strong>Info</strong>
+          <p class="small" style="margin-top:10px;">
+            Field: AI & signal processing<br>
+            Availability: 30/03/2026 (6 months)
+          </p>`,
+        footer: "Last updated: 12/12/2025",
+        cookieText: "Using Google Analytics (optional cookies) to measure audience. You can accept or refuse. Cookies are set only if you agree.",
+        cookieAccept: "Accept",
+        cookieDecline: "Decline"
+      }
+    };
+
+    const setLanguage = lang => {
+      const t = translations[lang];
+      if(!t) return;
+      localStorage.setItem('lang', lang);
+      const navLinks = document.querySelectorAll('.nav .links .chip[href]');
+      const navOrder = t.nav;
+      navLinks.forEach((link, idx) => {
+        if (navOrder[idx]) link.textContent = navOrder[idx];
+      });
+      const langBtn = document.querySelector('.lang-toggle');
+      if (langBtn){
+        langBtn.textContent = lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
+        langBtn.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer en français');
+      }
+      const banner = document.querySelector('.banner-content');
+      if (banner) banner.textContent = t.banner;
+      const subtitle = document.querySelector('.subtitle');
+      if (subtitle) subtitle.textContent = t.subtitle;
+      const heroIntro = document.querySelector('.hero-intro');
+      if (heroIntro) heroIntro.innerHTML = t.heroIntro;
+      const cvsTitle = document.querySelector('#cvs h2');
+      if (cvsTitle) cvsTitle.textContent = t.cvTitle;
+      const cvCards = document.querySelectorAll('#cvs .card');
+      if (cvCards[0]) cvCards[0].innerHTML = t.cvIndustry;
+      if (cvCards[1]) cvCards[1].innerHTML = t.cvMedical;
+      const projTitle = document.querySelector('#projets h2');
+      if (projTitle) projTitle.textContent = t.projectsTitle;
+      const projCards = document.querySelectorAll('#projets .card');
+      projCards.forEach((card, idx) => {
+        if (t.projects[idx]) card.innerHTML = t.projects[idx];
+      });
+      const skillsTitle = document.querySelector('#competences h2');
+      if (skillsTitle) skillsTitle.textContent = t.skillsTitle;
+      const expTitle = document.querySelector('#experience h2');
+      if (expTitle) expTitle.textContent = t.experienceTitle;
+      const expCard = document.querySelector('#experience .card');
+      if (expCard) expCard.innerHTML = t.experienceCard;
+      const contactTitle = document.querySelector('#contact h2');
+      if (contactTitle) contactTitle.textContent = t.contactTitle;
+      const contactCards = document.querySelectorAll('#contact .card');
+      if (contactCards[0]) contactCards[0].innerHTML = t.contactCard1;
+      if (contactCards[1]) contactCards[1].innerHTML = t.contactCard2;
+      hydratePhones();
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = t.footer;
+      const cookieText = document.querySelector('.cookie-text');
+      if (cookieText) cookieText.textContent = t.cookieText;
+      const cookieAccept = document.querySelector('.cookie-actions .accept');
+      const cookieDecline = document.querySelector('.cookie-actions .decline');
+      if (cookieAccept) cookieAccept.textContent = t.cookieAccept;
+      if (cookieDecline) cookieDecline.textContent = t.cookieDecline;
+    };
+
+    const langBtn = document.querySelector('.lang-toggle');
+    langBtn?.addEventListener('click', () => {
+      const current = localStorage.getItem('lang') || 'fr';
+      const next = current === 'fr' ? 'en' : 'fr';
+      setLanguage(next);
     });
+
+    const savedLang = localStorage.getItem('lang') || 'fr';
+    setLanguage(savedLang);
 
     // Consentement cookies (RGPD)
     const consentKey = 'cookie-consent';
