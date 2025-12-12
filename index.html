@@ -1,388 +1,429 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Célian Di Giovanni – IA & traitement du signal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio de Célian Di Giovanni — IA, traitement du signal, signaux physiologiques, imagerie médicale, projets académiques et hospitaliers.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Célian Di Giovanni — IA & traitement du signal</title>
+  <meta name="description" content="Portfolio de Célian Di Giovanni — IA, traitement du signal, signaux physiologiques, imagerie médicale, projets académiques et hospitaliers." />
+
   <style>
-    :root {
-      --max-width: 960px;
+    :root{
+      --max: 980px;
+      --bg: #0b0c10;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --border: rgba(255,255,255,.12);
+      --accent: #7dd3fc;   /* bleu clair */
+      --accent2:#a78bfa;   /* violet doux */
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 18px;
     }
- 
-    * { box-sizing: border-box; }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 24px 16px 64px;
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(125,211,252,.22), transparent 55%),
+        radial-gradient(1000px 700px at 80% 20%, rgba(167,139,250,.18), transparent 60%),
+        radial-gradient(900px 600px at 50% 85%, rgba(125,211,252,.10), transparent 55%),
+        var(--bg);
       line-height: 1.6;
-      /*body*/
     }
 
-    header {
-      margin-bottom: 32px;
+    a{ color: var(--text); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 16px 64px;
     }
 
-    h1 {
-      margin: 0 0 4px;
-      font-size: 1.8rem;
+    /* top nav */
+    .nav{
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,12,16,.55);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 12px;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .nav .brand{
+      font-weight: 650;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
+    .nav .links{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      font-size: .92rem;
+      color: var(--text);
+    }
+    .chip:hover{
+      background: rgba(255,255,255,.07);
+      text-decoration:none;
     }
 
-    h2 {
-      margin-top: 40px;
-      margin-bottom: 12px;
-      font-size: 1.2rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 4px;
+    /* hero */
+    .hero{
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
     }
-
-    h3 {
-      margin-top: 18px;
-      margin-bottom: 4px;
+    .hero h1{
+      margin: 0 0 6px;
+      font-size: clamp(1.55rem, 2.2vw, 2.1rem);
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin: 0 0 14px;
+      color: var(--muted);
       font-size: 1rem;
     }
 
-    p {
-      margin-top: 4px;
-      margin-bottom: 8px;
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 860px){
+      .hero-grid{ grid-template-columns: 1fr; }
     }
 
-    a {
-      text-decoration: none;
+    .hero p{
+      margin: 10px 0 0;
+      color: var(--text);
+    }
+    .muted{ color: var(--muted); }
+
+    .btns{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    .btn:hover{ background: rgba(255,255,255,.09); text-decoration:none; }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(125,211,252,.24), rgba(167,139,250,.18));
+      border-color: rgba(255,255,255,.18);
     }
 
-    a:hover {
-      text-decoration: underline;
+    .meta{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,.04);
+    }
+    .meta .row{
+      display:flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(255,255,255,.10);
+    }
+    .meta .row:last-child{ border-bottom:0; }
+    .meta .k{ color: var(--muted); }
+    .meta .v{ color: var(--text); font-weight: 600; text-align:right; }
+
+    /* sections */
+    section{ margin-top: 22px; }
+    h2{
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      letter-spacing: .2px;
     }
 
-    .muted {
-      color: #666;
-      font-size: 0.95rem;
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 12;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .card strong{ font-weight: 700; }
+    .card p{ margin: 8px 0 0; color: var(--text); }
+    .card ul{ margin: 10px 0 0; padding-left: 18px; }
+    .card li{ margin: 4px 0; color: var(--text); }
+
+    .cols-2 .card{ grid-column: span 6; }
+    @media (max-width: 860px){
+      .cols-2 .card{ grid-column: span 12; }
     }
 
-    .pill-row {
-      display: flex;
+    .tag-row{
+      display:flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 8px;
-      margin-bottom: 8px;
+      margin-top: 10px;
     }
-
-    .pill {
-      display: inline-block;
-      padding: 4px 10px;
+    .tag{
+      display:inline-block;
+      padding: 5px 10px;
       border-radius: 999px;
-      border: 1px solid #ddd;
-      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      font-size: .85rem;
+      color: var(--muted);
       white-space: nowrap;
     }
 
-    .links-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
+    .small{ font-size: .95rem; color: var(--muted); }
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); border:0;
     }
 
-    .btn-link {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid #ccc;
-      font-size: 0.9rem;
+    footer{
+      margin-top: 26px;
+      color: rgba(255,255,255,.55);
+      font-size: .9rem;
     }
-
-    .btn-link-primary {
-      border-color: #333;
-      font-weight: 600;
-    }
-
-    ul {
-      padding-left: 18px;
-      margin-top: 4px;
-      margin-bottom: 8px;
-    }
-
-    li {
-      margin-bottom: 4px;
-    }
-
-    .section-small {
-      font-size: 0.95rem;
-    }
-
-    .two-columns {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
-      gap: 24px;
-    }
-
-    @media (max-width: 720px) {
-      .two-columns {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.85rem;
-      color: #777;
-    }
-
-    /* accessibilité / SEO simple */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-<header>
-  <h1>Célian Di Giovanni</h1>
-  <p class="muted">
-    Étudiant ingénieur (M2) — IA & traitement du signal<br>
-    Stage de fin d’études (6 mois) à partir du 30/03/2026 — France
-  </p>
-
-  <div class="links-row">
-    <a class="btn-link btn-link-primary" href="#cvs">Voir mes CV</a>
-    <a class="btn-link" href="#projets">Projets</a>
-    <a class="btn-link" href="#competences">Compétences</a>
-    <a class="btn-link" href="#contact">Contact</a>
-  </div>
-
-  <div class="links-row">
-    <a class="btn-link" href="mailto:celian.digiovanni@gmail.com">Email</a>
-    <a class="btn-link" href="tel:+33770396029">Téléphone</a>
-    <a class="btn-link" href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a class="btn-link" href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-</header>
-
-<section id="profil">
-  <h2>Profil</h2>
-  <p>
-    Étudiant ingénieur (M2) spécialisé en intelligence artificielle, analyse de données et traitement du signal.
-    Projets en classification biométrique (83 volontaires), analyse de signaux ECG (base PhysioNet, projet épilepsie),
-    segmentation d’images radiographiques et validation applicative en environnement hospitalier.<br>
-    <strong>Recherche un stage de fin d’études de 6 mois à partir du 30 mars 2026.</strong>
-  </p>
-  <p class="sr-only">
-    IA, machine learning, traitement du signal, ECG, HRV, segmentation d’images, Python, TensorFlow, Random Forest.
-  </p>
-</section>
-
-<section id="cvs">
-  <h2>CV principaux</h2>
-  <p class="section-small">
-    Deux CV principaux selon le type de poste. Les versions spécialisées sont accessibles en dessous.
-  </p>
-  <ul>
-    <li>
-      🧠 <strong><a href="cvs/cv-industrie-celian-di-giovanni.pdf">CV Industrie — IA & traitement du signal</a></strong><br>
-      <span class="muted">Pour les postes en industrie, défense, R&amp;D, analyse de signaux, IA générale.</span>
-    </li>
-    <li>
-      🏥 <strong><a href="cvs/cv-e-sante-celian-di-giovanni.pdf">CV Domaine médical — IA & signaux physiologiques</a></strong><br>
-      <span class="muted">Pour les CHU, medtech, imagerie médicale, données cliniques, e-santé.</span>
-    </li>
-  </ul>
-
-  <!-- 
-  <h3>Autres CV spécialisés (selon l’offre)</h3>
-  <p class="section-small">
-    Versions plus ciblées à utiliser uniquement quand l’offre correspond précisément.
-  </p>
-  <ul>
-    <li>📊 <a href="/cv-data-sante.pdf">CV Data / Santé</a></li>
-    <li>⚙️ <a href="/cv-embarque-edgeai.pdf">CV IA embarquée (contexte STM32 / Edge Impulse)</a></li>
-    <li>✅ <a href="/cv-qa-validation.pdf">CV QA / Validation logicielle</a></li>
-    <li>🩻 <a href="/cv-imagerie-medicale.pdf">CV Traitement d’image / Imagerie médicale</a></li>
-  </ul>
-  -->
-</section>
-
-<section id="projets">
-  <h2>Projets principaux</h2>
-
-  <h3>Skin Maven Bandage — Classification biométrique par IA</h3>
-  <p class="section-small">
-    Projet de M1 : extraction de caractéristiques biométriques issues de l’impédance de la peau et classification
-    par IA (sexe, âge, teinte de peau) à partir de mesures sur 83 volontaires.
-  </p>
-  <ul>
-    <li>Type : classification supervisée</li>
-    <li>Données : impédance, phase, taille, poids — 83 personnes</li>
-    <li>Modèles testés : Logistic Regression, Random Forest, Gaussian, KNN, SVC</li>
-    <li>Modèle retenu : Random Forest</li>
-    <li>Résultats : ~90 % sexe, ~60 % âge, ~20 % teinte de peau</li>
-  </ul>
-  <p class="section-small">
-    🔗 Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">
-    skin-maven-bandage</a> <!-- adapte le lien au nom réel du repo -->
-  </p>
-
-  <h3>Suivi de patients épileptiques par IA (en cours) — Hackathon STMicroelectronics</h3>
-  <p class="section-small">
-    Projet en cours dans le cadre d’un hackathon STMicroelectronics : analyse de signaux ECG de patients épileptiques
-    (base PhysioNet CHB-MIT) et entraînement de modèles d’IA déployés via Edge Impulse sur STM32 pour détecter des
-    altérations caractéristiques associées aux épisodes épileptiques.
-  </p>
-  <ul>
-    <li>Données : ECG de 40 patients, ~1000 fenêtres de 30 s</li>
-    <li>Indicateurs : RMSSD, SDNN, ratio LF/HF</li>
-    <li>Plateforme : Edge Impulse (entraînement, compression, export)</li>
-    <li>État : résultats exploratoires, performances non encore stabilisées</li>
-  </ul>
-  <p class="section-small">
-    🔗 Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">
-    epilepsy-ecg-edge-ai</a> <!-- adapte le lien au nom réel du repo -->
-  </p>
-
-  <h3>Segmentation de zones d’intérêt sur images radiographiques</h3>
-  <p class="section-small">
-    Projet académique de traitement d’images : segmentation de zones d’intérêt sur des radiographies thoraciques
-    et cérébrales via seuillage d’Otsu, conversions RGB / niveaux de gris et morphologie mathématique
-    (érosion, dilatation). Résultats qualitatifs, note de 16/20.
-  </p>
-  <ul>
-    <li>Langages : Python, Octave</li>
-    <li>Algorithmes : Otsu, conversions RGB / niveaux de gris, érosion, dilatation</li>
-    <li>Données : 4 images radiographiques (thorax, cerveau)</li>
-  </ul>
-  <p class="section-small">
-    🔗 Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">
-    medical-image-segmentation</a>
-  </p>
-</section>
-
-<section id="competences">
-  <h2>Compétences</h2>
-  <div class="two-columns">
-    <div>
-      <h3>Langages</h3>
-      <div class="pill-row">
-        <span class="pill">Python</span>
-        <span class="pill">C</span>
-        <span class="pill">Java</span>
-        <span class="pill">Octave</span>
-      </div>
-      <h3>Langages</h3>
-      <div class="pill-row">
-        <span class="pill">Git / GitHub</span>
-        <span class="pill">VSCode</span>
-        <span class="pill">Excel Power Query</span>
-        <span class="pill">Trello</span>
-        <span class="pill">ClickUp</span>
-        <span class="pill">GanttProject</span>
-      </div>
-
-      <h3>IA & Data Biomédiacales</h3>
-      <div class="pill-row">
-        <span class="pill">TFLite</span>
-        <span class="pill">TensorFlow</span>
-        <span class="pill">Keras</span>
-        <span class="pill">Edge Impulse</span>
-        <span class="pill">Feature Engeniering</span>
+    <div class="nav">
+      <div class="brand">Célian Di Giovanni</div>
+      <div class="links">
+        <a class="chip" href="#cvs">CV</a>
+        <a class="chip" href="#projets">Projets</a>
+        <a class="chip" href="#competences">Compétences</a>
+        <a class="chip" href="#experience">Expérience</a>
+        <a class="chip" href="#contact">Contact</a>
       </div>
     </div>
 
-    <div>
-      <h3>Signaux physiologiques</h3>
-      <div class="pill-row">
-        <span class="pill">ECG</span>
-        <span class="pill">HRV</span>
-        <span class="pill">RMSSD</span>
-        <span class="pill">SDNN</span>
-        <span class="pill">LF / HF</span>
-        <span class="pill">STM32 (déploiement modèle)</span>
-      </div>
-      <h3>Vision par ordinateur</h3>
-      <div class="pill-row">
-        <span class="pill">Segmentation</span>
-        <span class="pill">Seuillage d'Otsu</span>
-        <span class="pill">Sobel</span>
-        <span class="pill">Morphologie Mathématique</span>
-      </div>
-      <h3>Bionics</h3>
-      <div class="pill-row">
-        <span class="pill">Biostatistiques</span>
-        <span class="pill">Neurosciences</span>
-      </div>
+    <header class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <h1>IA & traitement du signal</h1>
+          <p class="subtitle">
+            Étudiant ingénieur (M2) — analyse de signaux physiologiques, machine learning, imagerie<br>
+            <strong>Stage 6 mois à partir du 30/03/2026 — France</strong>
+          </p>
 
-      <h3>Langues</h3>
-      <div class="pill-row">
-        <span class="pill">Français (natif)</span>
-        <span class="pill">Anglais (B2 Cambridge)</span>
-        <span class="pill">Espagnol (B1)</span>
+          <div class="btns">
+            <a class="btn primary" href="#cvs">Télécharger mes CV</a>
+            <a class="btn" href="#projets">Voir mes projets</a>
+            <a class="btn" href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+
+          <p class="small">
+            Profil orienté <strong>IA appliquée</strong> : feature engineering, entraînement/évaluation de modèles (Random Forest, SVM, KNN),
+            analyse ECG/HRV (RMSSD, SDNN, LF/HF), segmentation d’images radiographiques.
+          </p>
+
+          <p class="sr-only">
+            IA, machine learning, traitement du signal, ECG, HRV, segmentation d’images, Python, TensorFlow, Random Forest, SVM, KNN.
+          </p>
+        </div>
+
+        <aside class="meta">
+          <div class="row"><div class="k">Localisation</div><div class="v">Nice / Toulon</div></div>
+          <div class="row"><div class="k">Disponibilité</div><div class="v">30/03/2026</div></div>
+          <div class="row"><div class="k">Durée</div><div class="v">6 mois</div></div>
+          <div class="row"><div class="k">Domaine</div><div class="v">IA & signal</div></div>
+          <div class="row"><div class="k">Email</div><div class="v"><a href="mailto:celian.digiovanni@gmail.com">celian.digiovanni@gmail.com</a></div></div>
+          <div class="row"><div class="k">Téléphone</div><div class="v"><a href="tel:+33770396029" class="mono">+33 7 70 39 60 29</a></div></div>
+        </aside>
       </div>
-    </div>
+    </header>
+
+    <section id="cvs">
+      <h2>CV</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <strong>CV Industrie — IA & traitement du signal</strong>
+          <p class="small">Pour industrie, défense, R&D, analyse de signaux, IA appliquée.</p>
+          <div class="btns">
+            <a class="btn primary" href="cvs/cv-industrie-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>CV Domaine médical — IA & signaux physiologiques</strong>
+          <p class="small">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
+          <div class="btns">
+            <a class="btn primary" href="cvs/cv-e-sante-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+          </div>
+        </div>
+      </div>
+      <p class="small">Astuce : garde les PDF en texte (pas image) pour la compatibilité ATS.</p>
+    </section>
+
+    <section id="projets">
+      <h2>Projets principaux</h2>
+
+      <div class="grid cols-2">
+        <article class="card">
+          <strong>Skin Maven Bandage — Classification biométrique par IA</strong>
+          <p class="small">Projet M1 — données réelles sur 83 volontaires.</p>
+          <ul>
+            <li>Data augmentation : SMOTE, randomisation</li>
+            <li>Modèles comparés : Logistic Regression, Random Forest, Gaussian, KNN, SVC</li>
+            <li>Modèle retenu : Random Forest</li>
+            <li>Résultats : ~90 % sexe, ~60 % âge, ~20 % teinte de peau</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Keras</span><span class="tag">SMOTE</span>
+          </div>
+          <p class="small">Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a></p>
+        </article>
+
+        <article class="card">
+          <strong>Suivi de patients épileptiques par IA (en cours) — Hackathon STMicroelectronics</strong>
+          <p class="small">Analyse ECG (PhysioNet CHB-MIT), modèles via Edge Impulse, export vers STM32.</p>
+          <ul>
+            <li>Données : ECG 40 patients, ~1000 fenêtres de 30 s</li>
+            <li>Indicateurs : RMSSD, SDNN, ratio LF/HF</li>
+            <li>État : résultats exploratoires, performances non stabilisées</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Traitement du signal</span><span class="tag">ECG</span><span class="tag">HRV</span><span class="tag">Edge Impulse</span>
+          </div>
+          <p class="small">Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a></p>
+        </article>
+
+        <article class="card">
+          <strong>Segmentation de zones d’intérêt sur images radiographiques</strong>
+          <p class="small">Projet académique — segmentation, résultats qualitatifs (note 16/20).</p>
+          <ul>
+            <li>Méthodes : Otsu, RGB / niveaux de gris, érosion, dilatation</li>
+            <li>Données : 4 images radiographiques (thorax, cerveau)</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Octave</span><span class="tag">Otsu</span><span class="tag">Morphologie</span>
+          </div>
+          <p class="small">Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a></p>
+        </article>
+
+        <article class="card">
+          <strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
+          <p class="small">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
+          <ul>
+            <li>Scénarios de tests, comptes rendus, interface équipes médicales ↔ développeurs</li>
+            <li>Automatisation Python (openpyxl, python-docx), Excel / Power Query / TCD</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">QA</span><span class="tag">Python</span><span class="tag">Power Query</span><span class="tag">Données cliniques</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <strong>Langages & outils</strong>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">C</span><span class="tag">Java</span><span class="tag">Octave</span>
+            <span class="tag">Git/GitHub</span><span class="tag">VSCode</span><span class="tag">Excel</span><span class="tag">Power Query</span>
+            <span class="tag">Redmine</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>IA & traitement du signal</strong>
+          <div class="tag-row">
+            <span class="tag">Random Forest</span><span class="tag">SVM</span><span class="tag">KNN</span><span class="tag">Logistic Regression</span>
+            <span class="tag">SMOTE</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Edge Impulse</span>
+            <span class="tag">ECG</span><span class="tag">HRV</span><span class="tag">RMSSD</span><span class="tag">SDNN</span><span class="tag">LF/HF</span>
+            <span class="tag">Segmentation</span><span class="tag">Otsu</span><span class="tag">Morphologie</span>
+          </div>
+          <p class="small">Note : “STM32” = contexte de déploiement du modèle (pas firmware).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Expérience</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>CHU de Nice — Pôle Pharmacie — Stage ingénieur (juin → sept. 2025)</strong>
+          <ul>
+            <li>Projet MUSE : QA fonctionnelle d’une application mobile de suivi (scénarios, tests, retours)</li>
+            <li>Extraction/structuration de données : DOCX/XLSX → base Excel (Python : openpyxl, python-docx)</li>
+            <li>Power Query et tableaux croisés dynamiques pour synthèses</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <strong>Coordonnées</strong>
+          <p>
+            Email : <a href="mailto:celian.digiovanni@gmail.com">celian.digiovanni@gmail.com</a><br>
+            Téléphone : <a class="mono" href="tel:+33770396029">+33 7 70 39 60 29</a><br>
+            LinkedIn : <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">celian-di-giovanni</a><br>
+            GitHub : <a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">celian06</a>
+          </p>
+        </div>
+        <div class="card">
+          <strong>Infos</strong>
+          <p class="small">
+            Domaine : IA & traitement du signal<br>
+            Disponibilité : 30/03/2026 (6 mois)<br>
+            Localisation : Nice / Toulon — candidatures France entière
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Dernière mise à jour : le 12/12/2025
+    </footer>
+
   </div>
-</section>
-
-<section id="experience">
-  <h2>Expérience</h2>
-
-  <h3>Stage ingénieur — QA & données cliniques</h3>
-  <p class="section-small">
-    CHU de Nice — Pôle Pharmacie — Juin à septembre 2025
-  </p>
-  <ul>
-    <li>Validation fonctionnelle d’une application mobile de suivi médical (projet MUSE).</li>
-    <li>Définition de cas d’usage et scénarios de tests, rapports aux développeurs.</li>
-    <li>Interface entre pharmacien, médecin et équipe de développement.</li>
-    <li>Extraction et centralisation de données à partir d’environ 80 rapports d’entretien (DOCX/XLSX).</li>
-    <li>Automatisation via Python (openpyxl, python-docx) et analyse sous Excel / Power Query.</li>
-  </ul>
-</section>
-
-<section id="formation">
-  <h2>Formation</h2>
-  <ul>
-    <li>
-      Cycle Ingénieur Numérique & Électronique — Option e-Santé<br>
-      ISEN Méditerranée — Depuis 2023
-    </li>
-    <li>
-      CPGE PCSI / PC — Lycée International de Valbonne (2021–2023)
-    </li>
-    <li>
-      Baccalauréat scientifique — Mention Bien — 2021
-    </li>
-    <li>
-      Bionics Engeniering — Université de Pise — 6 mois Erasmus (2024–2025)
-    </li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>
-    📍 Localisation Nice et Toulon (candidatures France entière)<br>
-    📧 <a href="mailto:celian.digiovanni@gmail.com">celian.digiovanni@gmail.com</a><br>
-    📞 <a href="tel:+33770396029">+33 7 70 39 60 29</a><br>
-    🔗 <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">
-      linkedin.com/in/celian-di-giovanni</a><br>
-    🔗 <a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">
-      github.com/celian06</a>
-  </p>
-</section>
-
-<footer>
-  Dernière mise à jour : le 12/12/2025
-</footer>
-
 </body>
 </html>
-
-<!-- rebuild -->
