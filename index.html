@@ -275,11 +275,20 @@
     }
 
     .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(14,165,233,.30);
-      box-shadow: 0 18px 40px rgba(14,165,233,.12);
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 18px 42px rgba(193,18,31,.18);
     }
-
+    .card strong::before{
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 16px;
+      background: var(--accent);
+      margin-right: 8px;
+      vertical-align: middle;
+      border-radius: 3px;
+    }
     @media (prefers-reduced-motion: reduce){
       .card, .btn, .chip { transition: none !important; }
       .card:hover::before{ animation: none !important; }
@@ -419,11 +428,10 @@
             </div>
           </div>
           <div class="hero-intro">
-            <p>
-              <strong>Mes domaines de spécialisation</strong> sont
-              <strong>l’intelligence artificielle</strong> et le <strong>traitement du signal</strong>,
-              avec un intérêt particulier pour l’analyse de <strong>données complexes</strong> issues de
-              <strong>capteurs</strong> et de <strong>systèmes réels</strong>.
+            <p class="hero-hook">
+              J’analyse, modélise et interprète des <strong>signaux complexes</strong> et des
+              <strong>données réelles</strong> pour concevoir des solutions d’
+              <strong>intelligence artificielle applicables en industrie comme en santé</strong>.
             </p>
 
             <p>
@@ -503,7 +511,7 @@
           <strong>CV Industrie — IA & traitement du signal</strong>
           <p class="kicker">Pour industrie, défense, R&amp;D, analyse de signaux, IA appliquée.</p>
           <div class="btns">
-            <a class="btn primary" href="cvs/cv-industrie-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-industrie-celian-di-giovanni.pdf">Télécharger (PDF)</a>
           </div>
         </div>
 
@@ -511,7 +519,7 @@
           <strong>CV Domaine médical — IA & signaux physiologiques</strong>
           <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
           <div class="btns">
-            <a class="btn primary" href="cvs/cv-e-sante-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-di-giovanni.pdf">Télécharger (PDF)</a>
           </div>
         </div>
       </div>
