@@ -9,15 +9,18 @@
   <style>
     :root{
       --max: 980px;
-      --bg: #0b0c10;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --border: rgba(255,255,255,.12);
-      --accent: #7dd3fc;   /* bleu clair */
-      --accent2:#a78bfa;   /* violet doux */
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
+
+      /* Light, premium */
+      --bg: #f6f7fb;
+      --surface: rgba(255,255,255,.92);
+      --surface2: rgba(255,255,255,.75);
+      --text: #0f172a;
+      --muted: rgba(15,23,42,.72);
+      --border: rgba(15,23,42,.10);
+
+      --accent: #2563eb;   /* bleu */
+      --accent2: #7c3aed;  /* violet */
+      --shadow: 0 18px 50px rgba(15,23,42,.10);
       --radius: 18px;
     }
 
@@ -28,11 +31,11 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
       color: var(--text);
       background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(125,211,252,.22), transparent 55%),
-        radial-gradient(1000px 700px at 80% 20%, rgba(167,139,250,.18), transparent 60%),
-        radial-gradient(900px 600px at 50% 85%, rgba(125,211,252,.10), transparent 55%),
+        radial-gradient(900px 500px at 15% 10%, rgba(37,99,235,.14), transparent 60%),
+        radial-gradient(800px 450px at 85% 18%, rgba(124,58,237,.10), transparent 60%),
+        radial-gradient(900px 600px at 50% 95%, rgba(37,99,235,.06), transparent 60%),
         var(--bg);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     a{ color: var(--text); text-decoration: none; }
@@ -41,7 +44,7 @@
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 22px 16px 64px;
+      padding: 22px 16px 76px;
     }
 
     /* top nav */
@@ -49,8 +52,8 @@
       position: sticky;
       top: 12px;
       z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(11,12,16,.55);
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,.72);
       border: 1px solid var(--border);
       border-radius: 999px;
       padding: 10px 12px;
@@ -58,10 +61,10 @@
       justify-content: space-between;
       align-items:center;
       gap: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      box-shadow: 0 10px 24px rgba(15,23,42,.08);
     }
     .nav .brand{
-      font-weight: 650;
+      font-weight: 750;
       letter-spacing: .2px;
       white-space: nowrap;
     }
@@ -74,16 +77,15 @@
     .chip{
       display:inline-flex;
       align-items:center;
-      gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      font-size: .92rem;
+      background: rgba(255,255,255,.70);
+      font-size: .95rem;
       color: var(--text);
     }
     .chip:hover{
-      background: rgba(255,255,255,.07);
+      background: rgba(255,255,255,.95);
       text-decoration:none;
     }
 
@@ -91,37 +93,50 @@
     .hero{
       margin-top: 16px;
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 26px;
       box-shadow: var(--shadow);
     }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
     .hero h1{
       margin: 0 0 6px;
       font-size: clamp(1.55rem, 2.2vw, 2.1rem);
       letter-spacing: .2px;
     }
+
     .subtitle{
       margin: 0 0 14px;
       color: var(--muted);
       font-size: 1rem;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 860px){
-      .hero-grid{ grid-template-columns: 1fr; }
+    .hero-top{
+      display:flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
     }
 
-    .hero p{
-      margin: 10px 0 0;
-      color: var(--text);
+    .avatar{
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 22px rgba(15,23,42,.10);
+      object-fit: cover;
+      background: rgba(15,23,42,.04);
     }
-    .muted{ color: var(--muted); }
 
     .btns{
       display:flex;
@@ -129,98 +144,106 @@
       gap: 10px;
       margin-top: 14px;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding: 10px 14px;
+      padding: 11px 14px;
       border-radius: 12px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      font-weight: 600;
-      font-size: .95rem;
+      background: rgba(255,255,255,.80);
+      font-weight: 650;
+      font-size: .96rem;
+      box-shadow: 0 10px 18px rgba(15,23,42,.06);
     }
-    .btn:hover{ background: rgba(255,255,255,.09); text-decoration:none; }
+    .btn:hover{ background: rgba(255,255,255,.98); text-decoration:none; }
     .btn.primary{
-      background: linear-gradient(135deg, rgba(125,211,252,.24), rgba(167,139,250,.18));
-      border-color: rgba(255,255,255,.18);
+      border-color: rgba(37,99,235,.22);
+      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.10));
     }
 
     .meta{
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
-      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(255,255,255,.72);
     }
     .meta .row{
       display:flex;
       justify-content: space-between;
       gap: 14px;
-      padding: 8px 0;
-      border-bottom: 1px dashed rgba(255,255,255,.10);
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(15,23,42,.12);
     }
     .meta .row:last-child{ border-bottom:0; }
     .meta .k{ color: var(--muted); }
-    .meta .v{ color: var(--text); font-weight: 600; text-align:right; }
+    .meta .v{ color: var(--text); font-weight: 650; text-align:right; }
 
     /* sections */
-    section{ margin-top: 22px; }
+    section{ margin-top: 34px; }
     h2{
-      margin: 0 0 12px;
-      font-size: 1.15rem;
+      margin: 0 0 14px;
+      font-size: 1.18rem;
       letter-spacing: .2px;
     }
 
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      gap: 16px;
     }
+
     .card{
       grid-column: span 12;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.86);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 18px;
+      box-shadow: 0 12px 26px rgba(15,23,42,.06);
     }
-    .card strong{ font-weight: 700; }
-    .card p{ margin: 8px 0 0; color: var(--text); }
-    .card ul{ margin: 10px 0 0; padding-left: 18px; }
-    .card li{ margin: 4px 0; color: var(--text); }
 
     .cols-2 .card{ grid-column: span 6; }
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .cols-2 .card{ grid-column: span 12; }
     }
+
+    .card strong{ font-weight: 750; }
+    .card p{ margin: 10px 0 0; color: var(--text); }
+    .card ul{ margin: 12px 0 0; padding-left: 18px; }
+    .card li{ margin: 6px 0; }
+
+    .small{ font-size: 1rem; color: var(--muted); }
+    .kicker{ font-size: .95rem; color: var(--muted); margin-top: 6px; }
 
     .tag-row{
       display:flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
     .tag{
       display:inline-block;
-      padding: 5px 10px;
+      padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      font-size: .85rem;
-      color: var(--muted);
+      background: rgba(255,255,255,.92);
+      font-size: .88rem;
+      color: rgba(15,23,42,.72);
       white-space: nowrap;
     }
 
-    .small{ font-size: .95rem; color: var(--muted); }
     .sr-only{
       position:absolute; width:1px; height:1px; padding:0; margin:-1px;
       overflow:hidden; clip:rect(0,0,0,0); border:0;
     }
 
     footer{
-      margin-top: 26px;
-      color: rgba(255,255,255,.55);
-      font-size: .9rem;
+      margin-top: 30px;
+      color: rgba(15,23,42,.55);
+      font-size: .95rem;
     }
+
     .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
@@ -242,22 +265,30 @@
     <header class="hero" id="top">
       <div class="hero-grid">
         <div>
-          <h1>IA & traitement du signal</h1>
-          <p class="subtitle">
-            Étudiant ingénieur (M2) — analyse de signaux physiologiques, machine learning, imagerie<br>
-            <strong>Stage 6 mois à partir du 30/03/2026 — France</strong>
-          </p>
+          <div class="hero-top">
+            <!-- PHOTO : mets ton image dans assets/photo.jpg ou change le chemin -->
+            <img class="avatar" src="assets/images/celian.jpg" alt="Photo de Célian Di Giovanni" />
+            <div>
+              <h1>IA & traitement du signal</h1>
+              <p class="subtitle">
+                Étudiant ingénieur (M2) — signaux physiologiques, machine learning, imagerie<br>
+                <strong>Stage 6 mois à partir du 30/03/2026 — France</strong>
+              </p>
+            </div>
+          </div>
 
           <div class="btns">
             <a class="btn primary" href="#cvs">Télécharger mes CV</a>
             <a class="btn" href="#projets">Voir mes projets</a>
+            <a class="btn" href="mailto:celian.digiovanni@gmail.com">Email</a>
             <a class="btn" href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a class="btn" href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
 
-          <p class="small">
-            Profil orienté <strong>IA appliquée</strong> : feature engineering, entraînement/évaluation de modèles (Random Forest, SVM, KNN),
-            analyse ECG/HRV (RMSSD, SDNN, LF/HF), segmentation d’images radiographiques.
+          <p class="small" style="margin-top:14px;">
+            Étudiant ingénieur (M2) spécialisé en intelligence artificielle, analyse de données et traitement du signal.
+            Projets en classification biométrique (83 volontaires), analyse ECG/HRV (PhysioNet, projet épilepsie en cours),
+            segmentation d’images radiographiques et expérience en environnement hospitalier.
           </p>
 
           <p class="sr-only">
@@ -271,7 +302,7 @@
           <div class="row"><div class="k">Durée</div><div class="v">6 mois</div></div>
           <div class="row"><div class="k">Domaine</div><div class="v">IA & signal</div></div>
           <div class="row"><div class="k">Email</div><div class="v"><a href="mailto:celian.digiovanni@gmail.com">celian.digiovanni@gmail.com</a></div></div>
-          <div class="row"><div class="k">Téléphone</div><div class="v"><a href="tel:+33770396029" class="mono">+33 7 70 39 60 29</a></div></div>
+          <div class="row"><div class="k">Téléphone</div><div class="v"><a class="mono" href="tel:+33770396029">+33 7 70 39 60 29</a></div></div>
         </aside>
       </div>
     </header>
@@ -281,30 +312,32 @@
       <div class="grid cols-2">
         <div class="card">
           <strong>CV Industrie — IA & traitement du signal</strong>
-          <p class="small">Pour industrie, défense, R&D, analyse de signaux, IA appliquée.</p>
+          <p class="kicker">Industrie, défense, R&amp;D, analyse de signaux, IA appliquée.</p>
           <div class="btns">
-            <a class="btn primary" href="cvs/cv-industrie-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-industrie-celian-di-giovanni.pdf">Télécharger (PDF)</a>
           </div>
         </div>
 
         <div class="card">
           <strong>CV Domaine médical — IA & signaux physiologiques</strong>
-          <p class="small">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
+          <p class="kicker">CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
           <div class="btns">
-            <a class="btn primary" href="cvs/cv-e-sante-celian-di-giovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-di-giovanni.pdf">Télécharger (PDF)</a>
           </div>
         </div>
       </div>
-      <p class="small">Astuce : garde les PDF en texte (pas image) pour la compatibilité ATS.</p>
+
+      <p class="small" style="margin-top:12px;">
+        Les PDFs ci-dessus sont destinés aux candidatures. (Plus bas : projets et preuves techniques via GitHub.)
+      </p>
     </section>
 
     <section id="projets">
       <h2>Projets principaux</h2>
-
       <div class="grid cols-2">
         <article class="card">
           <strong>Skin Maven Bandage — Classification biométrique par IA</strong>
-          <p class="small">Projet M1 — données réelles sur 83 volontaires.</p>
+          <p class="kicker">Projet M1 — données réelles sur 83 volontaires.</p>
           <ul>
             <li>Data augmentation : SMOTE, randomisation</li>
             <li>Modèles comparés : Logistic Regression, Random Forest, Gaussian, KNN, SVC</li>
@@ -314,12 +347,12 @@
           <div class="tag-row">
             <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Keras</span><span class="tag">SMOTE</span>
           </div>
-          <p class="small">Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a></p>
+          <p class="kicker">Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a></p>
         </article>
 
         <article class="card">
           <strong>Suivi de patients épileptiques par IA (en cours) — Hackathon STMicroelectronics</strong>
-          <p class="small">Analyse ECG (PhysioNet CHB-MIT), modèles via Edge Impulse, export vers STM32.</p>
+          <p class="kicker">Analyse ECG (PhysioNet CHB-MIT), modèles via Edge Impulse, export vers STM32.</p>
           <ul>
             <li>Données : ECG 40 patients, ~1000 fenêtres de 30 s</li>
             <li>Indicateurs : RMSSD, SDNN, ratio LF/HF</li>
@@ -328,12 +361,12 @@
           <div class="tag-row">
             <span class="tag">Traitement du signal</span><span class="tag">ECG</span><span class="tag">HRV</span><span class="tag">Edge Impulse</span>
           </div>
-          <p class="small">Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a></p>
+          <p class="kicker">Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a></p>
         </article>
 
         <article class="card">
           <strong>Segmentation de zones d’intérêt sur images radiographiques</strong>
-          <p class="small">Projet académique — segmentation, résultats qualitatifs (note 16/20).</p>
+          <p class="kicker">Projet académique — segmentation (note 16/20).</p>
           <ul>
             <li>Méthodes : Otsu, RGB / niveaux de gris, érosion, dilatation</li>
             <li>Données : 4 images radiographiques (thorax, cerveau)</li>
@@ -341,12 +374,12 @@
           <div class="tag-row">
             <span class="tag">Python</span><span class="tag">Octave</span><span class="tag">Otsu</span><span class="tag">Morphologie</span>
           </div>
-          <p class="small">Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a></p>
+          <p class="kicker">Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a></p>
         </article>
 
         <article class="card">
           <strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
-          <p class="small">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
+          <p class="kicker">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
           <ul>
             <li>Scénarios de tests, comptes rendus, interface équipes médicales ↔ développeurs</li>
             <li>Automatisation Python (openpyxl, python-docx), Excel / Power Query / TCD</li>
@@ -378,7 +411,7 @@
             <span class="tag">ECG</span><span class="tag">HRV</span><span class="tag">RMSSD</span><span class="tag">SDNN</span><span class="tag">LF/HF</span>
             <span class="tag">Segmentation</span><span class="tag">Otsu</span><span class="tag">Morphologie</span>
           </div>
-          <p class="small">Note : “STM32” = contexte de déploiement du modèle (pas firmware).</p>
+          <p class="kicker">Note : “STM32” = contexte de déploiement du modèle (pas firmware).</p>
         </div>
       </div>
     </section>
@@ -402,7 +435,7 @@
       <div class="grid cols-2">
         <div class="card">
           <strong>Coordonnées</strong>
-          <p>
+          <p style="margin-top:10px;">
             Email : <a href="mailto:celian.digiovanni@gmail.com">celian.digiovanni@gmail.com</a><br>
             Téléphone : <a class="mono" href="tel:+33770396029">+33 7 70 39 60 29</a><br>
             LinkedIn : <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">celian-di-giovanni</a><br>
@@ -411,7 +444,7 @@
         </div>
         <div class="card">
           <strong>Infos</strong>
-          <p class="small">
+          <p class="small" style="margin-top:10px;">
             Domaine : IA & traitement du signal<br>
             Disponibilité : 30/03/2026 (6 mois)<br>
             Localisation : Nice / Toulon — candidatures France entière
