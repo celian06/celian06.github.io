@@ -23,7 +23,6 @@
 
       --accent: #0ea5e9;
       --accent-amber: #f59e0b;
-      --accent-soft: rgba(14,165,233,.12);
       --shadow: 0 18px 50px rgba(15,23,42,.10);
 
       /* radius max 10px partout */
@@ -93,6 +92,27 @@
       border-color: rgba(14,165,233,.35);
       box-shadow: 0 10px 18px rgba(14,165,233,.12);
       background: rgba(255,255,255,.96);
+    }
+
+    /* Bandeau mise en avant */
+    .banner{
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(14,165,233,.35);
+      background: linear-gradient(120deg, rgba(14,165,233,.14), rgba(245,158,11,.12));
+      display:flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 12px 26px rgba(14,165,233,.12);
+      font-weight: 640;
+    }
+    .banner svg{
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      fill: currentColor;
+      color: #0f172a;
     }
 
     /* HERO */
@@ -194,6 +214,19 @@
     .meta .row:last-child{ border-bottom:0; }
     .meta .k{ color: var(--muted); }
     .meta .v{ color: var(--text); font-weight: 680; text-align:right; }
+    .meta .k.icon{ display:flex; align-items:center; gap:6px; }
+    .meta .k.icon svg{ width:18px; height:18px; display:block; fill: currentColor; }
+    .meta .avatar-box{
+      display:flex;
+      justify-content:center;
+      margin-bottom: 12px;
+    }
+    .meta .avatar{
+      width: 100%;
+      height: auto;
+      max-width: 220px;
+      object-fit: cover;
+    }
 
     /* SECTIONS */
     section{
@@ -229,7 +262,6 @@
       gap: 16px;
     }
 
-    /* Cartes avec accent graphique sans blur */
     .card{
       grid-column: span 12;
       border: 1px solid var(--border);
@@ -242,24 +274,10 @@
       transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
     }
 
-    .card::before{
-      content: none; /* suppression de l'effet roll-over en haut à droite */
-    }
-
     .card:hover{
       transform: translateY(-2px);
       border-color: rgba(14,165,233,.30);
       box-shadow: 0 18px 40px rgba(14,165,233,.12);
-    }
-    .card:hover::before{
-      opacity: 0;
-      animation: none;
-    }
-
-    @keyframes slice{
-      0%   { transform: translate(32px, -22px) rotate(8deg) scale(.94); opacity:.3; }
-      50%  { transform: translate(16px, -12px) rotate(2deg) scale(1.00); opacity:.9; }
-      100% { transform: translate(22px, -14px) rotate(0deg) scale(1.04); opacity:1; }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -310,6 +328,7 @@
     }
 
     .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .phone{ cursor: pointer; }
 
 /* Hero menu hover "wave line" (inspiré du CodePen) */
 .hero-links { margin-top: 14px; }
@@ -385,55 +404,100 @@
       </div>
     </div>
 
+    <div class="banner" role="note">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3h-7.57L12.5.5 11.07 3H3.5A1.5 1.5 0 0 0 2 4.5v16A1.5 1.5 0 0 0 3.5 22h18a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 21.5 3Zm-6.44 14.94-3.14-1.65-3.14 1.65.6-3.44-2.5-2.43 3.46-.5 1.54-3.12 1.55 3.12 3.46.5-2.5 2.43.6 3.44Z"/></svg>
+      <div>Recherche un stage de fin de cycle ingénieur à partir de mars 2026 pour une durée de 6 mois.</div>
+    </div>
+
     <header class="hero" id="top">
       <div class="hero-grid">
         <div>
           <div class="hero-top">
-            <img class="avatar" src="assets/images/celian.png" alt="Photo de Célian Di Giovanni">
             <div>
-              <h1>IA & traitement du signal</h1>
-              <p class="subtitle">
-                Étudiant ingénieur (M2) — signaux physiologiques, machine learning, imagerie<br>
-                <strong>Stage 6 mois à partir du 30/03/2026 — France</strong>
-              </p>
+              <h1>Célian Di Giovanni <br>IA & traitement du signal</h1>
+              <p class="subtitle">Étudiant ingénieur (M2) à l'ISEN Méditerrannée</p>
             </div>
           </div>
+          <div class="hero-intro">
+            <p>
+              <strong>Mes domaines de spécialisation</strong> sont
+              <strong>l’intelligence artificielle</strong> et le <strong>traitement du signal</strong>,
+              avec un intérêt particulier pour l’analyse de <strong>données complexes</strong> issues de
+              <strong>capteurs</strong> et de <strong>systèmes réels</strong>.
+            </p>
 
-          <nav class="hero-links" aria-label="Liens rapides">
-            <ul class="hero-menu">
-              <li><a href="#cvs">CV</a></li>
-              <li><a href="#projets">Projets</a></li>
-              <li><a href="mailto:recrutement.celian@di-giovanni.com">Email</a></li>
-              <li><a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <p>
+              Je conçois et j’évalue des <strong>modèles de machine learning</strong> à partir de
+              <strong>signaux</strong> et d’<strong>images</strong>, en travaillant sur :
+            </p>
+
+            <ul>
+              <li><strong>Extraction de caractéristiques</strong></li>
+              <li><strong>Sélection de modèles</strong></li>
+              <li><strong>Analyse des performances</strong></li>
             </ul>
-          </nav>
 
-          <p class="small" style="margin-top:16px;">
-            Étudiant ingénieur (M2) spécialisé en intelligence artificielle, analyse de données et traitement du signal.
-            Projets en classification biométrique (83 volontaires), analyse ECG/HRV (PhysioNet, projet épilepsie en cours),
-            segmentation d’images radiographiques et expérience en environnement hospitalier.<br>
-            <strong>Recherche un stage de fin d’études de 6 mois à partir du 30 mars 2026.</strong>
-          </p>
+            <p>
+              Mes projets s’appuient notamment sur des <strong>données physiologiques</strong>
+              (<abbr title="Électrocardiogramme">ECG</abbr>/<abbr title="Variabilité de la fréquence cardiaque">HRV</abbr>,
+              impédance biométrique) et sur de l’<strong>imagerie médicale</strong>.
+            </p>
 
-          <p class="sr-only">
-            IA, machine learning, traitement du signal, ECG, HRV, segmentation d’images, Python, TensorFlow, Random Forest.
-          </p>
+            <p>
+              <strong>Transférabilité :</strong> les méthodes et outils que je développe sont
+              <strong>transposables à d’autres domaines industriels</strong>, dès lors qu’il s’agit
+              d’analyser, modéliser et interpréter des <strong>signaux</strong> ou des
+              <strong>données multidimensionnelles</strong>, dans des contextes
+              <strong>académiques</strong>, <strong>industriels</strong> ou <strong>hospitaliers</strong>.
+            </p>
+          </div>
         </div>
 
         <aside class="meta">
-          <div class="row"><div class="k">Localisation</div><div class="v">Nice / Toulon</div></div>
-          <div class="row"><div class="k">Disponibilité</div><div class="v">30/03/2026</div></div>
-          <div class="row"><div class="k">Durée</div><div class="v">6 mois</div></div>
-          <div class="row"><div class="k">Domaine</div><div class="v">IA & signal</div></div>
-          <div class="row"><div class="k">Email</div><div class="v"><a href="mailto:celian.digiovanni@gmail.com">celian.digiovanni@gmail.com</a></div></div>
-          <div class="row"><div class="k">Téléphone</div><div class="v"><a class="mono" href="tel:+33770396029">+33 7 70 39 60 29</a></div></div>
+          <div class="avatar-box">
+            <img class="avatar" src="assets/images/celian.png" alt="Photo de Célian Di Giovanni">
+          </div>
+          <div class="row">
+            <div class="k icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg>
+              <span class="sr-only">Localisation</span>
+            </div>
+            <div class="v">Nice / Toulon</div>
+          </div>
+          <div class="row">
+            <div class="k icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 4h17a1.5 1.5 0 0 1 1.5 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4Zm0 2v.32L12 12.5l8.5-6.18V6h-17Zm17 2.68-6.9 5.02a2.5 2.5 0 0 1-2.2 0L3.5 8.68V18.5h17Z"/></svg>
+              <span class="sr-only">Email</span>
+            </div>
+            <div class="v"><a href="mailto:recrutement.celian@di-giovanni.com">recrutement.celian@di-giovanni.com</a></div>
+          </div>
+          <div class="row">
+            <div class="k icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 .99V20a1 1 0 0 1-1 1A16 16 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 .99c0 1.22.2 2.42.57 3.57a1 1 0 0 1-.24 1.01l-2.2 2.2Z"/></svg>
+              <span class="sr-only">Téléphone</span>
+            </div>
+            <div class="v"><a class="mono phone" data-phone="KzMzNzcwMzk2MDI5" href="#phone">Afficher le numéro</a></div>
+          </div>
+          <div class="row">
+            <div class="k icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.24 8.5h4.52V23H.24zM8.53 8.5h4.34v2h.06c.6-1.14 2.06-2.34 4.24-2.34 4.54 0 5.38 2.98 5.38 6.86V23h-4.52v-7.05c0-1.68-.03-3.84-2.34-3.84-2.35 0-2.71 1.83-2.71 3.72V23H8.53z"/></svg>
+              <span class="sr-only">LinkedIn</span>
+            </div>
+            <div class="v"><a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+          </div>
+          <div class="row">
+            <div class="k icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.8-.25.8-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.55-3.88-1.55-.53-1.33-1.3-1.69-1.3-1.69-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.6.23 2.78.12 3.07.74.8 1.18 1.82 1.18 3.08 0 4.43-2.69 5.4-5.25 5.69.42.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.28 0 .31.21.67.81.55A10.53 10.53 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+              <span class="sr-only">GitHub</span>
+            </div>
+            <div class="v"><a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+          </div>
         </aside>
       </div>
     </header>
 
     <section id="cvs">
-      <h2>CV</h2>
+      <h2>Mon CV personalisé par domaine</h2>
       <div class="grid cols-2">
         <div class="card">
           <strong>CV Industrie — IA & traitement du signal</strong>
@@ -602,7 +666,7 @@
           <p style="margin-top:10px;">
             📍 Localisation : Nice et Toulon (candidatures France entière)<br>
             📧 <a href="mailto:recrutement.celian@di-giovanni.com">celian.digiovanni@gmail.com</a><br>
-            📞 <a class="mono" href="tel:+33770396029">+33 7 70 39 60 29</a><br>
+            📞 <a class="mono phone" data-phone="KzMzNzcwMzk2MDI5" href="#phone">Afficher le numéro</a><br>
             🔗 <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">linkedin.com/in/celian-di-giovanni</a><br>
             🔗 <a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">github.com/celian06</a>
           </p>
@@ -622,5 +686,16 @@
     </footer>
 
   </div>
+  <script>
+    const phones = document.querySelectorAll('.phone');
+    const decode = str => atob(str);
+    phones.forEach(el => {
+      const raw = el.getAttribute('data-phone');
+      if(!raw) return;
+      const text = decode(raw);
+      el.textContent = text;
+      el.setAttribute('href', 'tel:' + text.replace(/\\s+/g, ''));
+    });
+  </script>
 </body>
 </html>
