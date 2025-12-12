@@ -115,6 +115,61 @@
       color: #0f172a;
     }
 
+    /* Consentement cookies */
+    .cookie-banner{
+      position: fixed;
+      inset: auto 14px 14px 14px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 16px 32px rgba(15,23,42,.12);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      z-index: 50;
+    }
+    .cookie-banner svg{
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      fill: currentColor;
+      color: var(--text);
+    }
+    .cookie-text{ margin: 0; font-size: .95rem; color: var(--muted); }
+    .cookie-actions{
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .cookie-actions button{
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      font-weight: 650;
+      cursor: pointer;
+      background: rgba(255,255,255,.9);
+      color: var(--text);
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+    .cookie-actions button:hover{
+      transform: translateY(-1px);
+      border-color: rgba(14,165,233,.35);
+      box-shadow: 0 10px 18px rgba(14,165,233,.10);
+    }
+    .cookie-actions .accept{
+      background: linear-gradient(135deg, rgba(14,165,233,.12), rgba(245,158,11,.12));
+      border-color: rgba(14,165,233,.28);
+    }
+    @media (max-width: 640px){
+      .cookie-banner{ flex-direction: column; }
+      .cookie-actions{ width: 100%; justify-content: flex-end; }
+    }
+
     /* HERO */
     .hero{
       margin-top: 16px;
@@ -398,15 +453,6 @@
     
   </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E0Q1Q4459Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-E0Q1Q4459Q');
-</script>
 <body>
   <div class="wrap">
 
@@ -702,6 +748,16 @@
     </footer>
 
   </div>
+  <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement aux cookies">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10.5A8.5 8.5 0 1 1 13.5 4 3 3 0 0 0 19 9.5 3 3 0 0 0 20 10.5Zm-7.55.45a1 1 0 1 0 0 2h.1a1 1 0 0 0 0-2h-.1Zm-2.4-3.9a1 1 0 1 0 0 2h.1a1 1 0 0 0 0-2h-.1Zm6.2 3.4a1 1 0 0 0-1 1v.1a1 1 0 1 0 2 0v-.1a1 1 0 0 0-1-1Zm-1 4.5a1 1 0 1 0 2 0v-.1a1 1 0 0 0-2 0v.1Zm-3.5-1.6a1 1 0 1 0-1-1h-.1a1 1 0 1 0 1 1h.1Z"/></svg>
+    <p class="cookie-text">
+      Utilisation de Google Analytics (cookies optionnels) pour mesurer l’audience. Vous pouvez accepter ou refuser. Les cookies ne seront déposés qu’en cas d’accord.
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="accept">Accepter</button>
+      <button type="button" class="decline">Refuser</button>
+    </div>
+  </div>
   <script>
     const phones = document.querySelectorAll('.phone');
     const decode = str => atob(str);
@@ -710,8 +766,48 @@
       if(!raw) return;
       const text = decode(raw);
       el.textContent = text;
-      el.setAttribute('href', 'tel:' + text.replace(/\\s+/g, ''));
+      el.setAttribute('href', 'tel:' + text.replace(/\s+/g, ''));
     });
+
+    // Consentement cookies (RGPD)
+    const consentKey = 'cookie-consent';
+    const banner = document.querySelector('.cookie-banner');
+    const acceptBtn = banner?.querySelector('.accept');
+    const declineBtn = banner?.querySelector('.decline');
+    const storedConsent = localStorage.getItem(consentKey);
+    const analyticsId = 'G-E0Q1Q4459Q';
+    let gaLoaded = false;
+
+    const loadAnalytics = () => {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', analyticsId, { anonymize_ip: true });
+    };
+
+    const applyConsent = value => {
+      localStorage.setItem(consentKey, value);
+      if (banner) banner.style.display = 'none';
+      if (value === 'granted') {
+        loadAnalytics();
+      }
+    };
+
+    if (storedConsent === 'granted') {
+      applyConsent('granted');
+    } else if (storedConsent === 'denied') {
+      if (banner) banner.style.display = 'none';
+    }
+
+    acceptBtn?.addEventListener('click', () => applyConsent('granted'));
+    declineBtn?.addEventListener('click', () => applyConsent('denied'));
   </script>
 </body>
 </html>
