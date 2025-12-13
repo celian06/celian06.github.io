@@ -378,16 +378,7 @@
       border-color: var(--border);
       box-shadow: 0 6px 14px rgba(15,23,42,.06);
     }
-    .card strong::before{
-      content: "";
-      display: inline-block;
-      width: 6px;
-      height: 16px;
-      background: var(--accent);
-      margin-right: 8px;
-      vertical-align: middle;
-      border-radius: 3px;
-    }
+
     @media (prefers-reduced-motion: reduce){
       .card, .btn, .chip { transition: none !important; }
       .card:hover::before{ animation: none !important; }
@@ -398,6 +389,9 @@
       .cols-2 .card{ grid-column: span 12; }
     }
 
+
+
+    
     .card strong{ font-weight: 780; }
     .card p{ margin: 10px 0 0; }
     .card ul{ margin: 12px 0 0; padding-left: 18px; }
@@ -506,6 +500,123 @@
   border-radius: 8px;
 }
 
+/* Section accent (neutre) */
+.section-formation { --accent: #374151; }
+
+/* Timeline */
+.timeline{
+  list-style: none;
+  margin-left:50px;
+  padding: 0;
+  position: relative;
+
+  /* espace pour filet + puces */
+  padding-left: 44px;
+}
+
+/* Filet vertical */
+.timeline::before{
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-radius: 2px;
+}
+
+.timeline-item{
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+
+  padding: 14px 0;
+}
+
+/* Puce */
+.timeline-marker{
+  position: absolute;
+  left: -25px;
+  top: 22px;
+  width: 12px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 10px; /* <= 10px */
+  background: var(--accent);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent) 12%, white);
+}
+
+/* Date */
+.timeline-date{
+  grid-column: 1;
+  color: rgba(27,18,18,.70);
+  font-weight: 700;
+  font-size: .95rem;
+  line-height: 1.3;
+  padding-top: 6px;
+  margin-top: -5px;
+}
+
+.timeline-date span{
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid rgba(27,18,18,.12);
+  border-radius: 8px; /* <= 10px */
+  background: rgba(255,255,255,.75);
+}
+
+/* Contenu */
+.timeline-content{
+  grid-column: 2;
+  border: 1px solid rgba(27,18,18,.12);
+  border-radius: 10px; /* <= 10px */
+  background: rgba(255,255,255,.88);
+  padding: 14px 16px;
+
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+/* Hover premium discret (accents cohérents) */
+.timeline-content:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 45%, rgba(27,18,18,.12));
+  box-shadow: 0 16px 34px rgba(27,18,18,.08);
+}
+
+.timeline-content h3{
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  letter-spacing: .1px;
+}
+
+.timeline-meta{
+  margin: 0 0 8px;
+  color: rgba(27,18,18,.62);
+  font-size: .95rem;
+}
+
+.timeline-content p{
+  margin: 0;
+  color: rgba(27,18,18,.86);
+}
+
+/* Responsive */
+@media (max-width: 760px){
+  .timeline-item{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .timeline-date{
+    grid-column: 1;
+    padding-top: 0;
+  }
+  .timeline-content{
+    grid-column: 1;
+  }
+}
     
   </style>
 </head>
@@ -517,6 +628,7 @@
       <div class="links">
         <a class="chip" href="#cvs">CV</a>
         <a class="chip" href="#projets">Projets</a>
+        <a class="chip" href="#formation">Formation</a>
         <a class="chip" href="#competences">Compétences</a>
         <a class="chip" href="#experience">Expérience</a>
         <a class="chip" href="#contact">Contact</a>
@@ -635,6 +747,66 @@
         </div>
       </div>
     </section>
+
+    <section id="formation" class="section section-formation">
+      <h2>Formation</h2>
+
+      <ol class="timeline" aria-label="Parcours de formation">
+        <li class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-date">
+            <span>2023 – 2026</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Cycle ingénieur Numérique & Électronique — option e-Santé</h3>
+            <p class="timeline-meta">ISEN Méditerranée · Niveau M2</p>
+            <p>
+              Parcours orienté IA, traitement du signal et systèmes numériques.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-date">
+            <span>2024 – 2025</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Erasmus — Bionics Engineering</h3>
+            <p class="timeline-meta">Université de Pise</p>
+            <p>
+              Approfondissement en signaux biologiques, neurosciences et imagerie.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-date">
+            <span>2021 – 2023</span>
+          </div>
+          <div class="timeline-content">
+            <h3>CPGE PCSI / PC</h3>
+            <p class="timeline-meta">Lycée International de Valbonne</p>
+            <p>
+              Mathématiques, physique et sciences de l’ingénieur.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-date">
+            <span>2021</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Baccalauréat scientifique — Mention Bien</h3>
+            <p class="timeline-meta">France</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
 
     <section id="projets">
       <h2>Projets principaux</h2>
@@ -832,7 +1004,7 @@
     // I18n toggle
     const translations = {
       fr: {
-        nav: ["CV", "Projets", "Compétences", "Expérience", "Contact"],
+        nav: ["CV", "Projets", "Formation", "Compétences", "Expérience", "Contact"],
         banner: "Recherche un stage de fin de cycle ingénieur à partir de mars 2026 pour une durée de 6 mois.",
         subtitle: "Étudiant ingénieur (M2) à l'ISEN Méditerrannée",
         heroIntro: `<p class="hero-hook">
@@ -877,6 +1049,33 @@
             <a class="btn primary" href="assets/cvs/cv-e-sante-celian-di-giovanni.pdf">Télécharger (PDF)</a>
           </div>`,
         projectsTitle: "Projets principaux",
+        formationTitle: "Formation",
+        formationItems: [
+          {
+            date: "2023 – 2026",
+            title: "Cycle ingénieur Numérique & Électronique — option e-Santé",
+            meta: "ISEN Méditerranée · 2023 – 2026 · Niveau M2",
+            desc: "Formation d’ingénieur orientée intelligence artificielle, traitement du signal et systèmes numériques. Projets académiques et industriels appliqués à des données réelles."
+          },
+          {
+            date: "2024 – 2025",
+            title: "Erasmus — Bionics Engineering",
+            meta: "Université de Pise · 2024 – 2025",
+            desc: "Approfondissement en signaux biologiques, neurosciences et imagerie, avec une approche interdisciplinaire ingénierie / sciences du vivant."
+          },
+          {
+            date: "2021 – 2023",
+            title: "CPGE PCSI / PC",
+            meta: "Lycée International de Valbonne · 2021 – 2023",
+            desc: "Formation scientifique intensive en mathématiques, physique et sciences de l’ingénieur."
+          },
+          {
+            date: "2021",
+            title: "Baccalauréat scientifique — Mention Bien",
+            meta: "2021",
+            desc: ""
+          }
+        ],
         projects: [
           `<strong>Skin Maven Bandage — Classification biométrique par IA</strong>
           <p class="kicker">Projet M1 — données réelles sur 83 volontaires.</p>
@@ -948,7 +1147,7 @@
         cookieDecline: "Refuser"
       },
       en: {
-        nav: ["Resume", "Projects", "Skills", "Experience", "Contact"],
+        nav: ["Resume", "Projects", "Education", "Skills", "Experience", "Contact"],
         banner: "Seeking a 6‑month final-year engineering internship starting March 2026.",
         subtitle: "M2 engineering student at ISEN Méditerranée",
         heroIntro: `<p class="hero-hook">
@@ -987,6 +1186,33 @@
             <a class="btn primary" href="assets/cvs/cv-e-sante-celian-di-giovanni.pdf">Download (PDF)</a>
           </div>`,
         projectsTitle: "Key projects",
+        formationTitle: "Education",
+        formationItems: [
+          {
+            date: "2023 – 2026",
+            title: "Engineering cycle in Digital & Electronics — e-Health track",
+            meta: "ISEN Méditerranée · 2023 – 2026 · Master level",
+            desc: "Engineering program focused on artificial intelligence, signal processing, and digital systems. Academic and industrial projects on real-world data."
+          },
+          {
+            date: "2024 – 2025",
+            title: "Erasmus — Bionics Engineering",
+            meta: "University of Pisa · 2024 – 2025",
+            desc: "Advanced work on biological signals, neuroscience, and imaging, with an interdisciplinary engineering/life sciences approach."
+          },
+          {
+            date: "2021 – 2023",
+            title: "Preparatory Classes (CPGE PCSI / PC)",
+            meta: "Lycée International de Valbonne · 2021 – 2023",
+            desc: "Intensive scientific training in mathematics, physics, and engineering sciences."
+          },
+          {
+            date: "2021",
+            title: "Scientific Baccalauréat — Honors",
+            meta: "2021",
+            desc: ""
+          }
+        ],
         projects: [
           `<strong>Skin Maven Bandage — Biometric classification with ML</strong>
           <p class="kicker">M1 project — real-world data on 83 volunteers.</p>
@@ -1089,6 +1315,23 @@
       const projCards = document.querySelectorAll('#projets .card');
       projCards.forEach((card, idx) => {
         if (t.projects[idx]) card.innerHTML = t.projects[idx];
+      });
+      const formationTitle = document.querySelector('#formation h2');
+      if (formationTitle) formationTitle.textContent = t.formationTitle;
+      const formationItems = document.querySelectorAll('#formation .formation-item');
+      formationItems.forEach((item, idx) => {
+        const data = t.formationItems[idx];
+        if (!data) return;
+        const date = item.querySelector('.formation-date');
+        const card = item.querySelector('.formation-card');
+        if (date) date.textContent = data.date;
+        if (card){
+          card.querySelector('h3').textContent = data.title;
+          const meta = card.querySelector('.formation-meta');
+          if (meta) meta.textContent = data.meta;
+          const desc = card.querySelector('p:not(.formation-meta)');
+          if (desc) desc.textContent = data.desc;
+        }
       });
       const skillsTitle = document.querySelector('#competences h2');
       if (skillsTitle) skillsTitle.textContent = t.skillsTitle;
