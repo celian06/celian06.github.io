@@ -539,14 +539,13 @@
 .timeline-marker{
   position: absolute;
   left: -25px;
-  top: 22px;
+  top: 38px;
   width: 12px;
   height: 12px;
   transform: translateX(-50%);
   border-radius: 10px; /* <= 10px */
   background: var(--accent);
-  box-shadow:
-    0 0 0 4px color-mix(in srgb, var(--accent) 12%, white);
+  box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 12%, white);
 }
 
 /* Date */
@@ -557,7 +556,7 @@
   font-size: .95rem;
   line-height: 1.3;
   padding-top: 6px;
-  margin-top: -6px;
+  margin-top: 6px;
 }
 
 .timeline-date span{
@@ -1055,26 +1054,26 @@
           {
             date: "2023 – 2026",
             title: "Cycle ingénieur Numérique & Électronique — option e-Santé",
-            meta: "ISEN Méditerranée · 2023 – 2026 · Niveau M2",
-            desc: "Formation d’ingénieur orientée intelligence artificielle, traitement du signal et systèmes numériques. Projets académiques et industriels appliqués à des données réelles."
+            meta: "ISEN Méditerranée · Niveau M2",
+            desc: "Parcours orienté IA, traitement du signal et systèmes numériques."
           },
           {
             date: "2024 – 2025",
             title: "Erasmus — Bionics Engineering",
-            meta: "Université de Pise · 2024 – 2025",
-            desc: "Approfondissement en signaux biologiques, neurosciences et imagerie, avec une approche interdisciplinaire ingénierie / sciences du vivant."
+            meta: "Université de Pise",
+            desc: "Approfondissement en signaux biologiques, neurosciences et Biostatistiques."
           },
           {
             date: "2021 – 2023",
             title: "CPGE PCSI / PC",
-            meta: "Lycée International de Valbonne · 2021 – 2023",
-            desc: "Formation scientifique intensive en mathématiques, physique et sciences de l’ingénieur."
+            meta: "Lycée International de Valbonne",
+            desc: "Mathématiques, physique et sciences de l’ingénieur."
           },
           {
             date: "2021",
             title: "Baccalauréat scientifique — Mention Bien",
-            meta: "2021",
-            desc: ""
+            meta: "Institution du Mont Saint-Jean Antibes",
+            desc: "Mathématiques et Physique-Chimie."
           }
         ],
         projects: [
@@ -1191,27 +1190,27 @@
         formationItems: [
           {
             date: "2023 – 2026",
-            title: "Engineering cycle in Digital & Electronics — e-Health track",
-            meta: "ISEN Méditerranée · 2023 – 2026 · Master level",
-            desc: "Engineering program focused on artificial intelligence, signal processing, and digital systems. Academic and industrial projects on real-world data."
+            title: "Engineering program in Digital & Electronics — e-Health track",
+            meta: "ISEN Méditerranée · Master level",
+            desc: "Focused on AI, signal processing, and digital systems."
           },
           {
             date: "2024 – 2025",
             title: "Erasmus — Bionics Engineering",
-            meta: "University of Pisa · 2024 – 2025",
-            desc: "Advanced work on biological signals, neuroscience, and imaging, with an interdisciplinary engineering/life sciences approach."
+            meta: "University of Pisa",
+            desc: "Deep dive into biological signals, neuroscience, and biostatistics."
           },
           {
             date: "2021 – 2023",
             title: "Preparatory Classes (CPGE PCSI / PC)",
-            meta: "Lycée International de Valbonne · 2021 – 2023",
-            desc: "Intensive scientific training in mathematics, physics, and engineering sciences."
+            meta: "Lycée International de Valbonne",
+            desc: "Mathematics, physics, and engineering sciences."
           },
           {
             date: "2021",
             title: "Scientific Baccalauréat — Honors",
-            meta: "2021",
-            desc: ""
+            meta: "Institution du Mont Saint-Jean Antibes",
+            desc: "Mathematics and physics-chemistry."
           }
         ],
         projects: [
@@ -1319,18 +1318,19 @@
       });
       const formationTitle = document.querySelector('#formation h2');
       if (formationTitle) formationTitle.textContent = t.formationTitle;
-      const formationItems = document.querySelectorAll('#formation .formation-item');
+      const formationItems = document.querySelectorAll('#formation .timeline-item');
       formationItems.forEach((item, idx) => {
         const data = t.formationItems[idx];
         if (!data) return;
-        const date = item.querySelector('.formation-date');
-        const card = item.querySelector('.formation-card');
+        const date = item.querySelector('.timeline-date span');
+        const card = item.querySelector('.timeline-content');
         if (date) date.textContent = data.date;
         if (card){
-          card.querySelector('h3').textContent = data.title;
-          const meta = card.querySelector('.formation-meta');
+          const title = card.querySelector('h3');
+          if (title) title.textContent = data.title;
+          const meta = card.querySelector('.timeline-meta');
           if (meta) meta.textContent = data.meta;
-          const desc = card.querySelector('p:not(.formation-meta)');
+          const desc = card.querySelector('p:not(.timeline-meta)');
           if (desc) desc.textContent = data.desc;
         }
       });
