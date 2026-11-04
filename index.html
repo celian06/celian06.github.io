@@ -13,7 +13,6 @@
     :root{
       --max: 980px;
 
-      /* Palette claire + accents bleu et ambre */
       --bg: #eef1f7;
       --surface: rgba(255,255,255,.96);
       --surface2: rgba(255,255,255,.86);
@@ -25,7 +24,6 @@
       --accent-amber: #f59e0b;
       --shadow: 0 18px 50px rgba(15,23,42,.10);
 
-      /* radius max 10px partout */
       --radius: 10px;
       --radius-sm: 8px;
     }
@@ -94,7 +92,7 @@
       background: rgba(255,255,255,.96);
     }
 
-    /* Bandeau mise en avant */
+    /* BANNER */
     .banner{
       margin: 18px 0 0;
       padding: 14px 16px;
@@ -123,7 +121,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Consentement cookies */
+    /* COOKIE BANNER */
     .cookie-banner{
       position: fixed;
       inset: auto 14px 14px 14px;
@@ -209,7 +207,6 @@
       gap: 14px;
       margin-bottom: 10px;
     }
-    /* Photo plus grande */
     .avatar{
       width: 160px;
       height: 160px;
@@ -371,7 +368,6 @@
       transform: translate(8px,8px);
     }
 
-    /* Neutraliser le hover sur les cartes de la section compétences uniquement */
     #competences .card::after{ display:none; }
     #competences .card:hover{
       transform: none;
@@ -389,9 +385,6 @@
       .cols-2 .card{ grid-column: span 12; }
     }
 
-
-
-    
     .card strong{ font-weight: 780; }
     .card p{ margin: 10px 0 0; }
     .card ul{ margin: 12px 0 0; padding-left: 18px; }
@@ -400,7 +393,6 @@
     .small{ font-size: 1rem; color: var(--muted); }
     .kicker{ font-size: .95rem; color: var(--muted); margin-top: 6px; }
 
-    /* pills : radius <= 10 (plus de 999) */
     .tag-row{
       display:flex;
       flex-wrap: wrap;
@@ -444,179 +436,163 @@
     .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
     .phone{ cursor: pointer; }
 
-/* Hero menu hover "wave line" (inspiré du CodePen) */
-.hero-links { margin-top: 14px; }
+    .hero-links { margin-top: 14px; }
 
-.hero-menu{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+    .hero-menu{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.hero-menu li{
-  height: 44px;
-  display: flex;
-  align-items: center;
-  padding: 0 6px;             /* un peu d'air */
-  transition: background-position-x 0.9s linear;
-  background-repeat: no-repeat;
-  background-position: 0 36px; /* position de la wave sous le texte */
-  background-size: 390px 50px; /* taille de la wave */
-}
+    .hero-menu li{
+      height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      transition: background-position-x 0.9s linear;
+      background-repeat: no-repeat;
+      background-position: 0 36px;
+      background-size: 390px 50px;
+    }
 
-.hero-menu li:not(:last-child){
-  margin-right: 0; /* on gère l'espacement via gap */
-}
+    .hero-menu li:not(:last-child){
+      margin-right: 0;
+    }
 
-.hero-menu a{
-  font-weight: 680;
-  font-size: 0.98rem;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.45s ease;
-}
+    .hero-menu a{
+      font-weight: 680;
+      font-size: 0.98rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.45s ease;
+    }
 
-.hero-menu li:hover{
-  /* Ligne accent sans blur */
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzOTAgNTAnPjxwYXRoIGZpbGw9J25vbmUnIHN0cm9rZT0nJTIzMGVhNWU5JyBzdHJva2Utd2lkdGg9JzEuNScgc3Ryb2tlLW1pdGVybGltaXQ9JzEwJyBkPSdNMCw0Ny41ODVjMCwwLDk3LjUsMCwxMzAsMCBjMTMuNzUsMCwyOC43NC0zOC43NzgsNDYuMTY4LTE5LjQxNkMxOTIuNjY5LDQ2LjUsMjQzLjYwMyw0Ny41ODUsMjYwLDQ3LjU4NWMzMS44MjEsMCwxMzAsMCwxMzAsMCcvPjwvc3ZnPg==");
-  animation: heroLine 1s;
-}
+    .hero-menu li:hover{
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzOTAgNTAnPjxwYXRoIGZpbGw9J25vbmUnIHN0cm9rZT0nJTIzMGVhNWU5JyBzdHJva2Utd2lkdGg9JzEuNScgc3Ryb2tlLW1pdGVybGltaXQ9JzEwJyBkPSdNMCw0Ny41ODVjMCwwLDk3LjUsMCwxMzAsMCBjMTMuNzUsMCwyOC43NC0zOC43NzgsNDYuMTY4LTE5LjQxNkMxOTIuNjY5LDQ2LjUsMjQzLjYwMyw0Ny41ODUsMjYwLDQ3LjU4NWMzMS44MjEsMCwxMzAsMCwxMzAsMCcvPjwvc3ZnPg==");
+      animation: heroLine 1s;
+    }
 
-.hero-menu li:hover a{
-  color: var(--accent);
-}
+    .hero-menu li:hover a{
+      color: var(--accent);
+    }
 
-@keyframes heroLine{
-  0% { background-position-x: 390px; }
-}
+    @keyframes heroLine{
+      0% { background-position-x: 390px; }
+    }
 
-/* accessibilité clavier */
-.hero-menu a:focus-visible{
-  outline: 2px solid rgba(14,165,233,.45);
-  outline-offset: 4px;
-  border-radius: 8px;
-}
+    .hero-menu a:focus-visible{
+      outline: 2px solid rgba(14,165,233,.45);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
 
-/* Section accent (neutre) */
-.section-formation { --accent: #374151; }
+    .section-formation { --accent: #374151; }
 
-/* Timeline */
-.timeline{
-  list-style: none;
-  margin-left:50px;
-  padding: 0;
-  position: relative;
+    .timeline{
+      list-style: none;
+      margin-left:50px;
+      padding: 0;
+      position: relative;
+      padding-left: 44px;
+    }
 
-  /* espace pour filet + puces */
-  padding-left: 44px;
-}
+    .timeline::before{
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border-radius: 2px;
+    }
 
-/* Filet vertical */
-.timeline::before{
-  content: "";
-  position: absolute;
-  left: 18px;
-  top: 10px;
-  bottom: 10px;
-  width: 2px;
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
-  border-radius: 2px;
-}
+    .timeline-item{
+      position: relative;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      padding: 14px 0;
+    }
 
-.timeline-item{
-  position: relative;
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 18px;
+    .timeline-marker{
+      position: absolute;
+      left: -25px;
+      top: 38px;
+      width: 12px;
+      height: 12px;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      background: var(--accent);
+      box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 12%, white);
+    }
 
-  padding: 14px 0;
-}
+    .timeline-date{
+      grid-column: 1;
+      color: rgba(27,18,18,.70);
+      font-weight: 700;
+      font-size: .95rem;
+      line-height: 1.3;
+      padding-top: 6px;
+      margin-top: 6px;
+    }
 
-/* Puce */
-.timeline-marker{
-  position: absolute;
-  left: -25px;
-  top: 38px;
-  width: 12px;
-  height: 12px;
-  transform: translateX(-50%);
-  border-radius: 10px; /* <= 10px */
-  background: var(--accent);
-  box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 12%, white);
-}
+    .timeline-date span{
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid rgba(27,18,18,.12);
+      border-radius: 8px;
+      background: rgba(255,255,255,.75);
+    }
 
-/* Date */
-.timeline-date{
-  grid-column: 1;
-  color: rgba(27,18,18,.70);
-  font-weight: 700;
-  font-size: .95rem;
-  line-height: 1.3;
-  padding-top: 6px;
-  margin-top: 6px;
-}
+    .timeline-content{
+      grid-column: 2;
+      border: 1px solid rgba(27,18,18,.12);
+      border-radius: 10px;
+      background: rgba(255,255,255,.88);
+      padding: 14px 16px;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
 
-.timeline-date span{
-  display: inline-block;
-  padding: 6px 10px;
-  border: 1px solid rgba(27,18,18,.12);
-  border-radius: 8px; /* <= 10px */
-  background: rgba(255,255,255,.75);
-}
+    .timeline-content:hover{
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 45%, rgba(27,18,18,.12));
+      box-shadow: 0 16px 34px rgba(27,18,18,.08);
+    }
 
-/* Contenu */
-.timeline-content{
-  grid-column: 2;
-  border: 1px solid rgba(27,18,18,.12);
-  border-radius: 10px; /* <= 10px */
-  background: rgba(255,255,255,.88);
-  padding: 14px 16px;
+    .timeline-content h3{
+      margin: 0 0 6px;
+      font-size: 1.02rem;
+      letter-spacing: .1px;
+    }
 
-  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-}
+    .timeline-meta{
+      margin: 0 0 8px;
+      color: rgba(27,18,18,.62);
+      font-size: .95rem;
+    }
 
-/* Hover premium discret (accents cohérents) */
-.timeline-content:hover{
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 45%, rgba(27,18,18,.12));
-  box-shadow: 0 16px 34px rgba(27,18,18,.08);
-}
+    .timeline-content p{
+      margin: 0;
+      color: rgba(27,18,18,.86);
+    }
 
-.timeline-content h3{
-  margin: 0 0 6px;
-  font-size: 1.02rem;
-  letter-spacing: .1px;
-}
-
-.timeline-meta{
-  margin: 0 0 8px;
-  color: rgba(27,18,18,.62);
-  font-size: .95rem;
-}
-
-.timeline-content p{
-  margin: 0;
-  color: rgba(27,18,18,.86);
-}
-
-/* Responsive */
-@media (max-width: 760px){
-  .timeline-item{
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .timeline-date{
-    grid-column: 1;
-    padding-top: 0;
-  }
-  .timeline-content{
-    grid-column: 1;
-  }
-}
-    
+    @media (max-width: 760px){
+      .timeline-item{
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .timeline-date{
+        grid-column: 1;
+        padding-top: 0;
+      }
+      .timeline-content{
+        grid-column: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -631,7 +607,7 @@
         <a class="chip" href="#competences">Compétences</a>
         <a class="chip" href="#experience">Expérience</a>
         <a class="chip" href="#contact">Contact</a>
-        <button class="chip lang-toggle" type="button" aria-label="Switch language">🇬🇧 EN</button>
+        <button class="chip lang-toggle" type="button" aria-label="Switch language">EN</button>
       </div>
     </div>
 
@@ -717,7 +693,7 @@
           </div>
           <div class="row">
             <div class="k icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.8-.25.8-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.55-3.88-1.55-.53-1.33-1.3-1.69-1.3-1.69-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.6.23 2.78.12 3.07.74.8 1.18 1.82 1.18 3.08 0 4.43-2.69 5.4-5.25 5.69.42.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.28 0 .31.21.67.81.55A10.53 10.53 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.8-.25.8-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.55-3.88-1.55-.53-1.33-1.3-1.69-1.3-1.69-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.6.23 2.78.12 3.07.74.8 1.18 1.82 1.18 3.08 0 4.43-2.69 5.4-5.25 5.69.42.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.28 0 .31.21.67.81.55A10.53 10.53 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
               <span class="sr-only">GitHub</span>
             </div>
             <div class="v"><a href="https://github.com/celian06" target="_blank" rel="noopener noreferrer">GitHub</a></div>
@@ -733,7 +709,7 @@
           <strong>CV Industrie — IA & traitement du signal</strong>
           <p class="kicker">Pour industrie, défense, R&amp;D, analyse de signaux, IA appliquée.</p>
           <div class="btns">
-            <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>
         </div>
 
@@ -741,7 +717,7 @@
           <strong>CV Domaine médical — IA & signaux physiologiques</strong>
           <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
           <div class="btns">
-            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>
         </div>
       </div>
@@ -807,7 +783,6 @@
       </ol>
     </section>
 
-
     <section id="projets">
       <h2>Projets principaux</h2>
       <div class="grid cols-2">
@@ -821,7 +796,7 @@
             <li>Résultats : ~90 % sexe, ~60 % âge, ~20 % teinte de peau</li>
           </ul>
           <p class="kicker">
-            🔗 Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
+            Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
           </p>
         </article>
         <article class="card">
@@ -830,10 +805,10 @@
           <ul>
             <li>Données : Enregistrements complets de 10 patients, fenêtres glissantes de 60 s.</li>
             <li>Indicateurs : RMSSD, SDNN, ratio LF/HF</li>
-            <li>État : Preuve de concept validée. Sensibilité de 92% sur la détection pré-ictale (anticipation < 1 min).</li>
+            <li>État : Preuve de concept validée. Sensibilité de 92% sur la détection pré-ictale (anticipation &lt; 1 min).</li>
           </ul>
           <p class="kicker">
-            🔗 Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
+            Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
           </p>
         </article>
 
@@ -846,7 +821,7 @@
             <li>Données : 4 images (résultats qualitatifs)</li>
           </ul>
           <p class="kicker">
-            🔗 Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
+            Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
           </p>
         </article>
 
@@ -863,7 +838,6 @@
       </div>
     </section>
 
-    <!-- COMPETENCES :  -->
     <section id="competences">
       <h2>Compétences</h2>
 
@@ -889,6 +863,7 @@
 
           <strong style="display:block; margin-top:14px;">IA & Data biomédicales</strong>
           <div class="tag-row">
+            <span class="tag">PyTorch</span>
             <span class="tag">TFLite</span>
             <span class="tag">TensorFlow</span>
             <span class="tag">Keras</span>
@@ -936,6 +911,16 @@
       <h2>Expérience</h2>
       <div class="grid">
         <div class="card">
+          <strong>INSERM — Institut des Neurosciences — Stage Ingénieur R&D (avril → oct. 2026)</strong>
+          <ul>
+            <li><strong>Contexte :</strong> Automatisation par Deep Learning du tri de signaux intracérébraux (sEEG) artéfactés pour le projet F-TRACT (~13 millions de canaux).</li>
+            <li><strong>Data Engineering :</strong> Traitement de 100 000 séries temporelles et création d'un algorithme de stratification dynamique.</li>
+            <li><strong>Modélisation :</strong> Développement sous PyTorch d'un CNN 2D et d'un Autoencodeur multi-tâches.</li>
+            <li><strong>Calcul :</strong> Parallélisation et entraînement sur cluster HPC (Slurm).</li>
+            <li><strong>Résultats :</strong> Modèle final validé à 85% de précision (test de McNemar) et création d'interfaces cliniques.</li>
+          </ul>
+        </div>
+        <div class="card">
           <strong>CHU de Nice — Pôle Pharmacie — Stage ingénieur (juin → sept. 2025)</strong>
           <ul>
             <li>Validation fonctionnelle d’une application mobile de suivi médical (projet MUSE).</li>
@@ -972,10 +957,11 @@
     </section>
 
     <footer>
-      Dernière mise à jour : le 01/02/2026
+      Dernière mise à jour : Novembre 2026
     </footer>
 
   </div>
+
   <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement aux cookies">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10.5A8.5 8.5 0 1 1 13.5 4 3 3 0 0 0 19 9.5 3 3 0 0 0 20 10.5Zm-7.55.45a1 1 0 1 0 0 2h.1a1 1 0 0 0 0-2h-.1Zm-2.4-3.9a1 1 0 1 0 0 2h.1a1 1 0 0 0 0-2h-.1Zm6.2 3.4a1 1 0 0 0-1 1v.1a1 1 0 1 0 2 0v-.1a1 1 0 0 0-1-1Zm-1 4.5a1 1 0 1 0 2 0v-.1a1 1 0 0 0-2 0v.1Zm-3.5-1.6a1 1 0 1 0-1-1h-.1a1 1 0 1 0 1 1h.1Z"/></svg>
     <p class="cookie-text">
@@ -986,6 +972,7 @@
       <button type="button" class="decline">Refuser</button>
     </div>
   </div>
+
   <script>
     const decode = str => atob(str);
     const hydratePhones = () => {
@@ -1000,7 +987,6 @@
     };
     hydratePhones();
 
-    // I18n toggle
     const translations = {
       fr: {
         nav: ["CV", "Projets", "Formation", "Compétences", "Expérience", "Contact"],
@@ -1036,16 +1022,16 @@
               <strong>données multidimensionnelles</strong>, dans des contextes
               <strong>académiques</strong>, <strong>industriels</strong> ou <strong>hospitaliers</strong>.
             </p>`,
-        cvTitle: "Mon CV personnalisé par domaine",
+        cvTitle: "Mon CV personalisé par domaine",
         cvIndustry: `<strong>CV Industrie — IA & traitement du signal</strong>
           <p class="kicker">Pour industrie, défense, R&amp;D, analyse de signaux, IA appliquée.</p>
           <div class="btns">
-            <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>`,
         cvMedical: `<strong>CV Domaine médical — IA & signaux physiologiques</strong>
           <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
           <div class="btns">
-            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni.pdf">Télécharger (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>`,
         projectsTitle: "Projets principaux",
         formationTitle: "Formation",
@@ -1085,7 +1071,7 @@
             <li>Résultats : ~90 % sexe, ~60 % âge, ~20 % teinte de peau</li>
           </ul>
           <p class="kicker">
-            🔗 Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
+            Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
           </p>`,
           `<strong>Anticipation de crises d'épilepsie par IA — 1er prix concours I-Novagames 2026</strong>
           <p class="kicker">Dispositif de sécurité préventive basé sur l'analyse de la Variabilité de la Fréquence Cardiaque (VFC) et le déploiement sur microcontrôleur.<br> Méthode : Analyse ECG (Base PhysioNet SZDB) via Random Forest (Python) et Réseaux de Neurones embarqués (Edge Impulse/STM32).</p>
@@ -1095,7 +1081,7 @@
             <li>État : Preuve de concept validée. Sensibilité de 92% sur la détection pré-ictale (anticipation < 1 min).</li>
           </ul>
           <p class="kicker">
-            🔗 Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
+            Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
           </p>`,
           `<strong>Segmentation de zones d’intérêt sur images radiographiques</strong>
           <p class="kicker">Projet académique — segmentation (note 16/20).</p>
@@ -1105,7 +1091,7 @@
             <li>Données : 4 images (résultats qualitatifs)</li>
           </ul>
           <p class="kicker">
-            🔗 Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
+            Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
           </p>`,
           `<strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
           <p class="kicker">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
@@ -1118,14 +1104,24 @@
         ],
         skillsTitle: "Compétences",
         experienceTitle: "Expérience",
-        experienceCard: `<strong>CHU de Nice — Pôle Pharmacie — Stage ingénieur (juin → sept. 2025)</strong>
+        experiences: [
+          `<strong>INSERM — Institut des Neurosciences — Stage Ingénieur R&D (avril → oct. 2026)</strong>
+          <ul>
+            <li><strong>Contexte :</strong> Automatisation par Deep Learning du tri de signaux intracérébraux (sEEG) artéfactés pour le projet F-TRACT (~13 millions de canaux).</li>
+            <li><strong>Data Engineering :</strong> Traitement de 100 000 séries temporelles et création d'un algorithme de stratification dynamique.</li>
+            <li><strong>Modélisation :</strong> Développement sous PyTorch d'un CNN 2D et d'un Autoencodeur multi-tâches.</li>
+            <li><strong>Calcul :</strong> Parallélisation et entraînement sur cluster HPC (Slurm).</li>
+            <li><strong>Résultats :</strong> Modèle final validé à 85% de précision (test de McNemar) et création d'interfaces cliniques.</li>
+          </ul>`,
+          `<strong>CHU de Nice — Pôle Pharmacie — Stage ingénieur (juin → sept. 2025)</strong>
           <ul>
             <li>Validation fonctionnelle d’une application mobile de suivi médical (projet MUSE).</li>
             <li>Définition de cas d’usage et scénarios de tests, rapports aux développeurs.</li>
             <li>Interface entre pharmacien, médecin et équipe de développement.</li>
             <li>Extraction et centralisation de données à partir d’environ 80 rapports d’entretien (DOCX/XLSX).</li>
             <li>Automatisation via Python (openpyxl, python-docx) et analyse sous Excel / Power Query.</li>
-          </ul>`,
+          </ul>`
+        ],
         contactTitle: "Contact",
         contactCard1: `<strong>Coordonnées</strong>
           <p style="margin-top:10px;">
@@ -1140,7 +1136,7 @@
             Domaine : IA & traitement du signal<br>
             Disponibilité : 30/03/2026 (6 mois)
           </p>`,
-        footer: "Dernière mise à jour : le 12/12/2025",
+        footer: "Dernière mise à jour : Novembre 2026",
         cookieText: "Utilisation de Google Analytics (cookies optionnels) pour mesurer l’audience. Vous pouvez accepter ou refuser. Les cookies ne seront déposés qu’en cas d’accord.",
         cookieAccept: "Accepter",
         cookieDecline: "Refuser"
@@ -1177,12 +1173,12 @@
         cvIndustry: `<strong>Industry Resume — AI & Signal Processing</strong>
           <p class="kicker">For industry, defense, R&D, signal analysis, applied AI.</p>
           <div class="btns">
-            <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni-en.pdf">Download (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni-2026-en.pdf">Download (PDF)</a>
           </div>`,
         cvMedical: `<strong>Medical Resume — AI & Physiological Signals</strong>
           <p class="kicker">For hospitals, medtech, medical imaging, clinical data, e-health.</p>
           <div class="btns">
-            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni-en.pdf">Download (PDF)</a>
+            <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni-2026-en.pdf">Download (PDF)</a>
           </div>`,
         projectsTitle: "Key projects",
         formationTitle: "Education",
@@ -1222,7 +1218,7 @@
             <li>Results: ~90% gender, ~60% age, ~20% skin tone</li>
           </ul>
           <p class="kicker">
-            🔗 Code: <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
+            Code: <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
           </p>`,         
           `<strong>Epileptic Seizure Anticipation via AI — Winner I-Novgames 2026 contest</strong>
           <p class="kicker">Preventive safety device based on Heart Rate Variability (HRV) analysis deployed on a microcontroller.<br> Method: ECG analysis (PhysioNet SZDB) using Random Forest (Python) and Embedded Neural Networks (Edge Impulse/STM32).</p>
@@ -1232,7 +1228,7 @@
             <li>Status: Validated Proof of Concept. 92% Sensitivity on pre-ictal detection (anticipation < 1 min).</li>
           </ul>
           <p class="kicker">
-            🔗 Code: <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
+            Code: <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
           </p>`,
           `<strong>Segmentation of regions of interest on radiographic images</strong>
           <p class="kicker">Academic project — segmentation (grade 16/20).</p>
@@ -1242,7 +1238,7 @@
             <li>Data: 4 images (qualitative results)</li>
           </ul>
           <p class="kicker">
-            🔗 Code: <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
+            Code: <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
           </p>`,
           `<strong>Internship — Nice University Hospital (2025): QA & clinical data</strong>
           <p class="kicker">App validation (MUSE) + extraction/structuring of clinical data.</p>
@@ -1255,14 +1251,24 @@
         ],
         skillsTitle: "Skills",
         experienceTitle: "Experience",
-        experienceCard: `<strong>Nice University Hospital — Pharmacy Dept. — Engineering intern (Jun → Sep 2025)</strong>
+        experiences: [
+          `<strong>INSERM — Institute of Neurosciences — R&D Engineering Intern (Apr → Oct 2026)</strong>
+          <ul>
+            <li><strong>Context:</strong> Deep Learning automation for artifact filtering of intracerebral signals (sEEG) for the F-TRACT project (~13 million channels).</li>
+            <li><strong>Data Engineering:</strong> Processed 100,000 multi-channel time series and engineered a dynamic stratification algorithm.</li>
+            <li><strong>Modeling:</strong> Developed a 2D CNN and a multi-task Autoencoder architecture in PyTorch.</li>
+            <li><strong>Computing:</strong> Parallelized and trained neural network models on high-performance Linux computing clusters (Slurm).</li>
+            <li><strong>Results:</strong> Achieved 85% accuracy (McNemar test validation) and developed clinical decision-support UI tools.</li>
+          </ul>`,
+          `<strong>Nice University Hospital — Pharmacy Dept. — Engineering intern (Jun → Sep 2025)</strong>
           <ul>
             <li>Functional validation of a mobile medical app (MUSE project).</li>
             <li>Use-case and test-scenario definition, reports to developers.</li>
             <li>Interface between pharmacist, physician, and development team.</li>
             <li>Data extraction/centralization from ~80 interview reports (DOCX/XLSX).</li>
             <li>Automation with Python (openpyxl, python-docx) and analysis in Excel / Power Query.</li>
-          </ul>`,
+          </ul>`
+        ],
         contactTitle: "Contact",
         contactCard1: `<strong>Contact details</strong>
           <p style="margin-top:10px;">
@@ -1277,7 +1283,7 @@
             Field: AI & signal processing<br>
             Availability: 30/03/2026 (6 months)
           </p>`,
-        footer: "Last updated: 12/12/2025",
+        footer: "Last updated: November 2026",
         cookieText: "Using Google Analytics (optional cookies) to measure audience. You can accept or refuse. Cookies are set only if you agree.",
         cookieAccept: "Accept",
         cookieDecline: "Decline"
@@ -1295,7 +1301,7 @@
       });
       const langBtn = document.querySelector('.lang-toggle');
       if (langBtn){
-        langBtn.textContent = lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
+        langBtn.textContent = lang === 'fr' ? 'EN' : 'FR';
         langBtn.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer en français');
       }
       const banner = document.querySelector('.banner-content');
@@ -1335,10 +1341,15 @@
       });
       const skillsTitle = document.querySelector('#competences h2');
       if (skillsTitle) skillsTitle.textContent = t.skillsTitle;
+      
       const expTitle = document.querySelector('#experience h2');
       if (expTitle) expTitle.textContent = t.experienceTitle;
-      const expCard = document.querySelector('#experience .card');
-      if (expCard) expCard.innerHTML = t.experienceCard;
+      
+      const expCards = document.querySelectorAll('#experience .card');
+      expCards.forEach((card, idx) => {
+        if (t.experiences[idx]) card.innerHTML = t.experiences[idx];
+      });
+      
       const contactTitle = document.querySelector('#contact h2');
       if (contactTitle) contactTitle.textContent = t.contactTitle;
       const contactCards = document.querySelectorAll('#contact .card');
@@ -1365,7 +1376,6 @@
     const savedLang = localStorage.getItem('lang') || 'fr';
     setLanguage(savedLang);
 
-    // Consentement cookies (RGPD)
     const consentKey = 'cookie-consent';
     const banner = document.querySelector('.cookie-banner');
     const acceptBtn = banner?.querySelector('.accept');
