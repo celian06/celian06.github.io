@@ -613,7 +613,7 @@
 
     <div class="banner" role="note">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3h-7.57L12.5.5 11.07 3H3.5A1.5 1.5 0 0 0 2 4.5v16A1.5 1.5 0 0 0 3.5 22h18a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 21.5 3Zm-6.44 14.94-3.14-1.65-3.14 1.65.6-3.44-2.5-2.43 3.46-.5 1.54-3.12 1.55 3.12 3.46.5-2.5 2.43.6 3.44Z"/></svg>
-      <div class="banner-content">Recherche un stage de fin de cycle ingénieur à partir de mars 2026 pour une durée de 6 mois.</div>
+      <div class="banner-content">Recherche d'une opportunité stimulante qui me permettrait de développer mes compétences en Intelligence Artificielle.</div>
     </div>
 
     <header class="hero" id="top">
@@ -622,7 +622,7 @@
           <div class="hero-top">
             <div>
               <h1>Célian Di Giovanni <br>IA & traitement du signal</h1>
-              <p class="subtitle">Étudiant ingénieur (M2) à l'ISEN Méditerrannée</p>
+              <p class="subtitle">Ingénieur diplômé de l'ISEN Méditerrannée</p>
             </div>
           </div>
           <div class="hero-intro">
@@ -639,14 +639,14 @@
 
             <ul>
               <li><strong>Extraction de caractéristiques</strong></li>
-              <li><strong>Sélection de modèles</strong></li>
+              <li><strong>Création/Sélection de modèles</strong></li>
               <li><strong>Analyse des performances</strong></li>
             </ul>
 
             <p>
               Mes projets s’appuient notamment sur des <strong>données physiologiques</strong>
               (<abbr title="Électrocardiogramme">ECG</abbr>/<abbr title="Variabilité de la fréquence cardiaque">HRV</abbr>,
-              impédance biométrique) et sur de l’<strong>imagerie médicale</strong>.
+              impédance biométrique, <abbr title="spectro-électroencéphalographie">sEEG</abbr>) et sur de l’<strong>imagerie médicale</strong>.
             </p>
 
             <p>
@@ -707,7 +707,7 @@
       <div class="grid cols-2">
         <div class="card">
           <strong>CV Industrie — IA & traitement du signal</strong>
-          <p class="kicker">Pour industrie, défense, R&amp;D, analyse de signaux, IA appliquée.</p>
+          <p class="kicker">Pour industrie, défense, analyse de signaux, IA appliquée.</p>
           <div class="btns">
             <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>
@@ -715,7 +715,7 @@
 
         <div class="card">
           <strong>CV Domaine médical — IA & signaux physiologiques</strong>
-          <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
+          <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, R&amp;D, e-santé.</p>
           <div class="btns">
             <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>
@@ -736,7 +736,7 @@
             <h3>Cycle ingénieur Numérique & Électronique — option e-Santé</h3>
             <p class="timeline-meta">ISEN Méditerranée · Niveau M2</p>
             <p>
-              Parcours orienté IA, traitement du signal et systèmes numériques.
+              Parcours orienté IA appliqué au monde de la santé.
             </p>
           </div>
         </li>
@@ -750,7 +750,7 @@
             <h3>Erasmus — Bionics Engineering</h3>
             <p class="timeline-meta">Université de Pise</p>
             <p>
-              Approfondissement en signaux biologiques, neurosciences et Biostatistiques.
+              Approfondissement en Neurosciences et Biostatistiques.
             </p>
           </div>
         </li>
@@ -764,7 +764,7 @@
             <h3>CPGE PCSI / PC</h3>
             <p class="timeline-meta">Lycée International de Valbonne</p>
             <p>
-              Mathématiques, physique, sciences de l’ingénieur et Chimie.
+              Mathématiques, Physique-Chimie, sciences de l’ingénieur et Chimie.
             </p>
           </div>
         </li>
@@ -786,6 +786,30 @@
     <section id="projets">
       <h2>Projets principaux</h2>
       <div class="grid cols-2">
+
+        <article class="card">
+          <strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
+          <p class="kicker">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
+          <ul>
+            <li>Définition de cas d’usage et scénarios de tests, comptes rendus aux développeurs</li>
+            <li>Interface entre pharmacien, médecin et équipe de développement</li>
+            <li>Extraction et centralisation de données à partir d’environ 80 rapports (DOCX/XLSX)</li>
+            <li>Automatisation Python (openpyxl, python-docx) + Excel / Power Query / TCD</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <strong>Stage — INS - INSERM Marseille : Ingénieur R&D IA</strong>
+          <p class="kicker">Classification de signaux sEEG issus du projet international f-Tract</p>
+          <ul>
+            <li>Construction d'un jeu de données de 100k canaux issus de la base de données f-Tract.</li>
+            <li>Analyse en Composantes Principales.</li>
+            <li>Création d'un réseau de neurones convolutifs (CNN), Autoencodeurs pour la classification</li>
+            <li>Vérification statistique des modèles développés (test de McNemar).</li>
+            <li>Développement d'interface web pour application automatique de classifications.</li>
+          </ul>
+        </article>
+        
         <article class="card">
           <strong>Skin Maven Bandage — Classification biométrique par IA</strong>
           <p class="kicker">Projet M1 — données réelles sur 83 volontaires.</p>
@@ -824,17 +848,7 @@
             Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
           </p>
         </article>
-
-        <article class="card">
-          <strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
-          <p class="kicker">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
-          <ul>
-            <li>Définition de cas d’usage et scénarios de tests, comptes rendus aux développeurs</li>
-            <li>Interface entre pharmacien, médecin et équipe de développement</li>
-            <li>Extraction et centralisation de données à partir d’environ 80 rapports (DOCX/XLSX)</li>
-            <li>Automatisation Python (openpyxl, python-docx) + Excel / Power Query / TCD</li>
-          </ul>
-        </article>
+        
       </div>
     </section>
 
@@ -877,10 +891,8 @@
           <div class="tag-row">
             <span class="tag">ECG</span>
             <span class="tag">HRV</span>
-            <span class="tag">RMSSD</span>
-            <span class="tag">SDNN</span>
+            <span class="tag">sEEG</span>
             <span class="tag">LF / HF</span>
-            <span class="tag">STM32 (déploiement modèle)</span>
           </div>
 
           <strong style="display:block; margin-top:14px;">Vision par ordinateur</strong>
@@ -939,7 +951,7 @@
         <div class="card">
           <strong>Coordonnées</strong>
           <p style="margin-top:10px;">
-            📍 Localisation : Nice et Toulon (candidatures France entière)<br>
+            📍 Localisation : Nice (candidatures France entière)<br>
             📧 <a href="mailto:recrutement.celian@di-giovanni.com">celian.digiovanni@gmail.com</a><br>
             📞 <a class="mono phone" data-phone="KzMzNzcwMzk2MDI5" href="#phone">Afficher le numéro</a><br>
             🔗 <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">linkedin.com/in/celian-di-giovanni</a><br>
@@ -950,7 +962,7 @@
           <strong>Infos</strong>
           <p class="small" style="margin-top:10px;">
             Domaine : IA & traitement du signal<br>
-            Disponibilité : 30/03/2026 (6 mois)
+            Disponibilité : immédiate
           </p>
         </div>
       </div>
@@ -990,8 +1002,8 @@
     const translations = {
       fr: {
         nav: ["CV", "Projets", "Formation", "Compétences", "Expérience", "Contact"],
-        banner: "Recherche un stage de fin de cycle ingénieur à partir de mars 2026 pour une durée de 6 mois.",
-        subtitle: "Étudiant ingénieur (M2) à l'ISEN Méditerrannée",
+        banner: "Recherche d'une opportunité stimulante qui me permettrait de développer mes compétences en Intelligence Artificielle.",
+        subtitle: "Ingénieur diplômé de l'ISEN Méditerrannée",
         heroIntro: `<p class="hero-hook">
               J’analyse, modélise et interprète des <strong>signaux complexes</strong> et des
               <strong>données réelles</strong> pour concevoir des solutions d’
@@ -1005,14 +1017,14 @@
 
             <ul>
               <li><strong>Extraction de caractéristiques</strong></li>
-              <li><strong>Sélection de modèles</strong></li>
+              <li><strong>Création/Sélection de modèles</strong></li>
               <li><strong>Analyse des performances</strong></li>
             </ul>
 
             <p>
               Mes projets s’appuient notamment sur des <strong>données physiologiques</strong>
               (<abbr title="Électrocardiogramme">ECG</abbr>/<abbr title="Variabilité de la fréquence cardiaque">HRV</abbr>,
-              impédance biométrique) et sur de l’<strong>imagerie médicale</strong>.
+              impédance biométrique, <abbr title="spectro-électroencéphalographie">sEEG</abbr>) et sur de l’<strong>imagerie médicale</strong>.
             </p>
 
             <p>
@@ -1024,12 +1036,12 @@
             </p>`,
         cvTitle: "Mon CV personalisé par domaine",
         cvIndustry: `<strong>CV Industrie — IA & traitement du signal</strong>
-          <p class="kicker">Pour industrie, défense, R&amp;D, analyse de signaux, IA appliquée.</p>
+          <p class="kicker">Pour industrie, défense, analyse de signaux, IA appliquée.</p>
           <div class="btns">
             <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>`,
         cvMedical: `<strong>CV Domaine médical — IA & signaux physiologiques</strong>
-          <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, e-santé.</p>
+          <p class="kicker">Pour CHU, medtech, imagerie médicale, données cliniques, R&amp;D, e-santé.</p>
           <div class="btns">
             <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni-2026.pdf">Télécharger (PDF)</a>
           </div>`,
@@ -1040,28 +1052,45 @@
             date: "2023 – 2026",
             title: "Cycle ingénieur Numérique & Électronique — option e-Santé",
             meta: "ISEN Méditerranée · Niveau M2",
-            desc: "Parcours orienté IA, traitement du signal et systèmes numériques."
+            desc: "Parcours orienté IA appliqué au monde de la santé."
           },
           {
             date: "2024 – 2025",
             title: "Erasmus — Bionics Engineering",
             meta: "Université de Pise",
-            desc: "Approfondissement en signaux biologiques, neurosciences et Biostatistiques."
+            desc: "Approfondissement en Neurosciences et Biostatistiques."
           },
           {
             date: "2021 – 2023",
             title: "CPGE PCSI / PC",
             meta: "Lycée International de Valbonne",
-            desc: "Mathématiques, physique et sciences de l’ingénieur."
+            desc: "Mathématiques, Physique-Chimie, sciences de l’ingénieur et Chimie."
           },
           {
             date: "2021",
             title: "Baccalauréat scientifique — Mention Bien",
             meta: "Institution du Mont Saint-Jean Antibes",
-            desc: "Mathématiques et Physique-Chimie."
+            desc: "Mathématiques et Physique-Chimie"
           }
         ],
         projects: [
+          `<strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
+          <p class="kicker">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
+          <ul>
+            <li>Définition de cas d’usage et scénarios de tests, comptes rendus aux développeurs</li>
+            <li>Interface entre pharmacien, médecin et équipe de développement</li>
+            <li>Extraction et centralisation de données à partir d’environ 80 rapports (DOCX/XLSX)</li>
+            <li>Automatisation Python (openpyxl, python-docx) + Excel / Power Query / TCD</li>
+          </ul>`,
+          `<strong>Stage — INS - INSERM Marseille : Ingénieur R&D IA</strong>
+          <p class="kicker">Classification de signaux sEEG issus du projet international f-Tract</p>
+          <ul>
+            <li>Construction d'un jeu de données de 100k canaux issus de la base de données f-Tract.</li>
+            <li>Analyse en Composantes Principales.</li>
+            <li>Création d'un réseau de neurones convolutifs (CNN), Autoencodeurs pour la classification</li>
+            <li>Vérification statistique des modèles développés (test de McNemar).</li>
+            <li>Développement d'interface web pour application automatique de classifications.</li>
+          </ul>`,
           `<strong>Skin Maven Bandage — Classification biométrique par IA</strong>
           <p class="kicker">Projet M1 — données réelles sur 83 volontaires.</p>
           <ul>
@@ -1073,12 +1102,12 @@
           <p class="kicker">
             Code : <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
           </p>`,
-          `<strong>Anticipation de crises d'épilepsie par IA — 1er prix concours I-Novagames 2026</strong>
-          <p class="kicker">Dispositif de sécurité préventive basé sur l'analyse de la Variabilité de la Fréquence Cardiaque (VFC) et le déploiement sur microcontrôleur.<br> Méthode : Analyse ECG (Base PhysioNet SZDB) via Random Forest (Python) et Réseaux de Neurones embarqués (Edge Impulse/STM32).</p>
+          `<strong>Anticipation de crises d'épilepsie par IA — 1er prix Concours I-Novgames 2026</strong>
+          <p class="kicker">Analyse ECG (Base PhysioNet SZDB) via Random Forest (Python) et Réseaux de Neurones embarqués (Edge Impulse/STM32).</p>
           <ul>
             <li>Données : Enregistrements complets de 10 patients, fenêtres glissantes de 60 s.</li>
-            <li>Indicateurs : RMSSD, SDNN, MeanRR (Domaine temporel).</li>
-            <li>État : Preuve de concept validée. Sensibilité de 92% sur la détection pré-ictale (anticipation < 1 min).</li>
+            <li>Indicateurs : RMSSD, SDNN, ratio LF/HF</li>
+            <li>État : Preuve de concept validée. Sensibilité de 92% sur la détection pré-ictale (anticipation &lt; 1 min).</li>
           </ul>
           <p class="kicker">
             Code : <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
@@ -1092,15 +1121,7 @@
           </ul>
           <p class="kicker">
             Code : <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
-          </p>`,
-          `<strong>Stage — CHU de Nice (2025) : QA & données cliniques</strong>
-          <p class="kicker">Validation applicative (MUSE) + extraction/structuration de données cliniques.</p>
-          <ul>
-            <li>Définition de cas d’usage et scénarios de tests, comptes rendus aux développeurs</li>
-            <li>Interface entre pharmacien, médecin et équipe de développement</li>
-            <li>Extraction et centralisation de données à partir d’environ 80 rapports (DOCX/XLSX)</li>
-            <li>Automatisation Python (openpyxl, python-docx) + Excel / Power Query / TCD</li>
-          </ul>`
+          </p>`
         ],
         skillsTitle: "Compétences",
         experienceTitle: "Expérience",
@@ -1125,7 +1146,7 @@
         contactTitle: "Contact",
         contactCard1: `<strong>Coordonnées</strong>
           <p style="margin-top:10px;">
-            📍 Localisation : Nice et Toulon (candidatures France entière)<br>
+            📍 Localisation : Nice (candidatures France entière)<br>
             📧 <a href="mailto:recrutement.celian@di-giovanni.com">celian.digiovanni@gmail.com</a><br>
             📞 <a class="mono phone" data-phone="KzMzNzcwMzk2MDI5" href="#phone">Afficher le numéro</a><br>
             🔗 <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">linkedin.com/in/celian-di-giovanni</a><br>
@@ -1134,7 +1155,7 @@
         contactCard2: `<strong>Infos</strong>
           <p class="small" style="margin-top:10px;">
             Domaine : IA & traitement du signal<br>
-            Disponibilité : 30/03/2026 (6 mois)
+            Disponibilité : immédiate
           </p>`,
         footer: "Dernière mise à jour : Novembre 2026",
         cookieText: "Utilisation de Google Analytics (cookies optionnels) pour mesurer l’audience. Vous pouvez accepter ou refuser. Les cookies ne seront déposés qu’en cas d’accord.",
@@ -1143,8 +1164,8 @@
       },
       en: {
         nav: ["Resume", "Projects", "Education", "Skills", "Experience", "Contact"],
-        banner: "Seeking a 6‑month final-year engineering internship starting March 2026.",
-        subtitle: "M2 engineering student at ISEN Méditerranée",
+        banner: "Seeking a challenging opportunity to develop my skills in Artificial Intelligence.",
+        subtitle: "Graduate Engineer from ISEN Méditerranée",
         heroIntro: `<p class="hero-hook">
               I analyze, model, and interpret <strong>complex signals</strong> and <strong>real-world data</strong> to design
               <strong>AI solutions for industry and healthcare</strong>.
@@ -1156,12 +1177,12 @@
 
             <ul>
               <li><strong>Feature extraction</strong></li>
-              <li><strong>Model selection</strong></li>
+              <li><strong>Model creation/selection</strong></li>
               <li><strong>Performance analysis</strong></li>
             </ul>
 
             <p>
-              My projects leverage <strong>physiological data</strong> (ECG/HRV, biometric impedance) and <strong>medical imaging</strong>.
+              My projects leverage <strong>physiological data</strong> (ECG/HRV, biometric impedance, sEEG) and <strong>medical imaging</strong>.
             </p>
 
             <p>
@@ -1171,12 +1192,12 @@
             </p>`,
         cvTitle: "Resume tailored by domain",
         cvIndustry: `<strong>Industry Resume — AI & Signal Processing</strong>
-          <p class="kicker">For industry, defense, R&D, signal analysis, applied AI.</p>
+          <p class="kicker">For industry, defense, signal analysis, applied AI.</p>
           <div class="btns">
             <a class="btn primary" href="assets/cvs/cv-industrie-celian-digiovanni-2026-en.pdf">Download (PDF)</a>
           </div>`,
         cvMedical: `<strong>Medical Resume — AI & Physiological Signals</strong>
-          <p class="kicker">For hospitals, medtech, medical imaging, clinical data, e-health.</p>
+          <p class="kicker">For hospitals, medtech, medical imaging, clinical data, R&D, e-health.</p>
           <div class="btns">
             <a class="btn primary" href="assets/cvs/cv-e-sante-celian-digiovanni-2026-en.pdf">Download (PDF)</a>
           </div>`,
@@ -1187,28 +1208,45 @@
             date: "2023 – 2026",
             title: "Engineering program in Digital & Electronics — e-Health track",
             meta: "ISEN Méditerranée · Master level",
-            desc: "Focused on AI, signal processing, and digital systems."
+            desc: "AI-oriented program applied to healthcare."
           },
           {
             date: "2024 – 2025",
             title: "Erasmus — Bionics Engineering",
             meta: "University of Pisa",
-            desc: "Deep dive into biological signals, neuroscience, and biostatistics."
+            desc: "Advanced studies in Neuroscience and Biostatistics."
           },
           {
             date: "2021 – 2023",
             title: "Preparatory Classes (CPGE PCSI / PC)",
             meta: "Lycée International de Valbonne",
-            desc: "Mathematics, physics, and engineering sciences."
+            desc: "Mathematics, Physics-Chemistry, engineering sciences, and Chemistry."
           },
           {
             date: "2021",
             title: "Scientific Baccalauréat — Honors",
             meta: "Institution du Mont Saint-Jean Antibes",
-            desc: "Mathematics and physics-chemistry."
+            desc: "Mathematics and Physics-Chemistry"
           }
         ],
         projects: [
+          `<strong>Internship — Nice University Hospital (2025): QA & clinical data</strong>
+          <p class="kicker">App validation (MUSE) + extraction/structuring of clinical data.</p>
+          <ul>
+            <li>Use-case definition and test scenarios, reports to developers</li>
+            <li>Interface between pharmacist, physician, and dev team</li>
+            <li>Data extraction/centralization from ~80 interview reports (DOCX/XLSX)</li>
+            <li>Automation with Python (openpyxl, python-docx) + Excel / Power Query / Pivot Tables</li>
+          </ul>`,
+          `<strong>Internship — INS - INSERM Marseille: AI R&D Engineer</strong>
+          <p class="kicker">Classification of sEEG signals from the international f-Tract project</p>
+          <ul>
+            <li>Built a 100k-channel dataset from the f-Tract database.</li>
+            <li>Principal Component Analysis (PCA).</li>
+            <li>Created a Convolutional Neural Network (CNN) and Autoencoders for classification.</li>
+            <li>Statistical validation of developed models (McNemar's test).</li>
+            <li>Developed a web interface for automated classification applications.</li>
+          </ul>`,
           `<strong>Skin Maven Bandage — Biometric classification with ML</strong>
           <p class="kicker">M1 project — real-world data on 83 volunteers.</p>
           <ul>
@@ -1219,13 +1257,13 @@
           </ul>
           <p class="kicker">
             Code: <a href="https://github.com/celian06/ML_Biometric_Signal_Classification" target="_blank" rel="noopener noreferrer">ML_Biometric_Signal_Classification</a>
-          </p>`,         
+          </p>`,
           `<strong>Epileptic Seizure Anticipation via AI — Winner I-Novgames 2026 contest</strong>
           <p class="kicker">Preventive safety device based on Heart Rate Variability (HRV) analysis deployed on a microcontroller.<br> Method: ECG analysis (PhysioNet SZDB) using Random Forest (Python) and Embedded Neural Networks (Edge Impulse/STM32).</p>
           <ul>
             <li>Data: Full recordings from 10 patients, 60s sliding windows.</li>
             <li>Indicators: RMSSD, SDNN, MeanRR (Time-domain).</li>
-            <li>Status: Validated Proof of Concept. 92% Sensitivity on pre-ictal detection (anticipation < 1 min).</li>
+            <li>Status: Validated Proof of Concept. 92% Sensitivity on pre-ictal detection (anticipation &lt; 1 min).</li>
           </ul>
           <p class="kicker">
             Code: <a href="https://github.com/celian06/Edge_AI_HRV_Monitoring_STM32" target="_blank" rel="noopener noreferrer">Edge_AI_HRV_Monitoring_STM32</a>
@@ -1239,15 +1277,7 @@
           </ul>
           <p class="kicker">
             Code: <a href="https://github.com/celian06/Image_Processing_Segmentation_Algorithms" target="_blank" rel="noopener noreferrer">Image_Processing_Segmentation_Algorithms</a>
-          </p>`,
-          `<strong>Internship — Nice University Hospital (2025): QA & clinical data</strong>
-          <p class="kicker">App validation (MUSE) + extraction/structuring of clinical data.</p>
-          <ul>
-            <li>Use-case definition and test scenarios, reports to developers</li>
-            <li>Interface between pharmacist, physician, and dev team</li>
-            <li>Data extraction/centralization from ~80 interview reports (DOCX/XLSX)</li>
-            <li>Automation with Python (openpyxl, python-docx) + Excel / Power Query / Pivot Tables</li>
-          </ul>`
+          </p>`
         ],
         skillsTitle: "Skills",
         experienceTitle: "Experience",
@@ -1272,7 +1302,7 @@
         contactTitle: "Contact",
         contactCard1: `<strong>Contact details</strong>
           <p style="margin-top:10px;">
-            📍 Location: Nice & Toulon (applications across France)<br>
+            📍 Location: Nice (applications across France)<br>
             📧 <a href="mailto:recrutement.celian@di-giovanni.com">celian.digiovanni@gmail.com</a><br>
             📞 <a class="mono phone" data-phone="KzMzNzcwMzk2MDI5" href="#phone">Show number</a><br>
             🔗 <a href="https://www.linkedin.com/in/celian-di-giovanni/" target="_blank" rel="noopener noreferrer">linkedin.com/in/celian-di-giovanni</a><br>
@@ -1281,7 +1311,7 @@
         contactCard2: `<strong>Info</strong>
           <p class="small" style="margin-top:10px;">
             Field: AI & signal processing<br>
-            Availability: 30/03/2026 (6 months)
+            Availability: immediate
           </p>`,
         footer: "Last updated: November 2026",
         cookieText: "Using Google Analytics (optional cookies) to measure audience. You can accept or refuse. Cookies are set only if you agree.",
